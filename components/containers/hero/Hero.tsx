@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import avatarplay from "@/public/png/avatarplay.png";
+import cornerFront from "@/public/svg/2.svg";
+import cornerEnd from "@/public/svg/1.svg";
 
 export default function Hero() {
   return (
@@ -28,17 +30,88 @@ export default function Hero() {
             <span>Alex’s Portfolio</span>
           </div>
         </div>
-        Avata
       </div>
+
       <h1 className="font-bold text-[48px] mt-10 tracking-[-0.02em]">
         I am a{" "}
-        <span className="bg-linear-to-r from-pink-500 via-purple-500 to-violet-500 bg-clip-text text-transparent ">
-          Front-
+        <span className="relative inline-block  p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
+          <span className="block  bg-black px-2 py-1 leading-none">
+            <span className="bg-linear-to-r from-pink-500 via-purple-500 to-violet-500 bg-clip-text text-transparent font-bold leading-none">
+              Front-
+            </span>
+          </span>
+
+          <Image
+            src={cornerFront}
+            alt=""
+            width={14}
+            height={14}
+            className="absolute -top-1 -left-1"
+          />
+
+          <Image
+            src={cornerFront}
+            alt=""
+            width={14}
+            height={14}
+            className="absolute -top-1 -right-1"
+          />
+
+          <Image
+            src={cornerFront}
+            alt=""
+            width={14}
+            height={14}
+            className="absolute -bottom-1 -left-1"
+          />
+
+          <Image
+            src={cornerFront}
+            alt=""
+            width={14}
+            height={14}
+            className="absolute -bottom-1 -right-1"
+          />
         </span>
-        <span className="block bg-linear-to-r from-pink-500 via-purple-500 to-violet-500 bg-clip-text text-transparent">
-          End Developer
-        </span>{" "}
-        & Web Programming Instructor
+        <span className="relative inline-block  p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
+          <span className="block  bg-black px-2 py-1 leading-none">
+            <span className="bg-linear-to-r from-pink-500 via-purple-500 to-violet-500 bg-clip-text text-transparent font-bold leading-none">
+              End Developer
+            </span>
+          </span>
+          <Image
+            src={cornerEnd}
+            alt=""
+            width={14}
+            height={14}
+            className="absolute -top-1 -left-1"
+          />
+
+          <Image
+            src={cornerEnd}
+            alt=""
+            width={14}
+            height={14}
+            className="absolute -top-1 -right-1"
+          />
+
+          <Image
+            src={cornerEnd}
+            alt=""
+            width={14}
+            height={14}
+            className="absolute -bottom-1 -left-1"
+          />
+
+          <Image
+            src={cornerEnd}
+            alt=""
+            width={14}
+            height={14}
+            className="absolute -bottom-1 -right-1"
+          />
+        </span>
+        <span className="block">& Web Programming Instructor</span>
       </h1>
       <p className="font-bold text-md text-neutral-200 mt-6 mx-auto leading-8 tracking-wide">
         Hi, I’m Alex, a passionate web developer with over{" "}
@@ -46,7 +119,7 @@ export default function Hero() {
         in creating responsive websites. I also teach aspiring developers to
         master modern web programming and bring their ideas to life.
       </p>
-      <Button variant="portfolio" className="w-full h-16 mt-6 text-xl">
+      <Button variant="gradient" className="w-full h-16 mt-6 text-xl">
         View Portofolio
       </Button>
       <div className="mt-14">

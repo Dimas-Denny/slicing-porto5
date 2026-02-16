@@ -13,13 +13,17 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "relative border border-transparent bg-background shadow-xs \
+   bg-[linear-gradient(var(--background),var(--background)),linear-gradient(to_right,#632ABB,#0093DD)] \
+   bg-origin-border bg-clip-padding \
+   hover:bg-accent hover:text-accent-foreground \
+   dark:bg-input/30 dark:hover:bg-input/50",
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost:
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
-        portfolio:
+        gradient:
           "rounded-full text-white font-semibold \
    bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 \
    shadow-[0_10px_30px_rgba(168,85,247,0.35)] \

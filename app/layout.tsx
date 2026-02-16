@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} font-sans antialiased px-5`}>
+      <body className={`${poppins.variable} font-sans antialiased px-3`}>
         <Navbar />
         {children}
       </body>
