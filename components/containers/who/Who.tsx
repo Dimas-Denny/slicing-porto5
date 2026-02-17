@@ -1,6 +1,6 @@
 export default function Who() {
   return (
-    <main className="h-800">
+    <main>
       <div className="text-4xl mt-14 font-extrabold">Who am I?</div>
       <p className="font-semibold text-md text-neutral-200 mt-6 mx-auto leading-8 tracking-wide">
         Hi, I’m Alex, a Front-End Developer & Web Programming Instructor based
