@@ -2,6 +2,7 @@ import Hero from "@/components/containers/hero/Hero";
 import Who from "@/components/containers/who/Who";
 import Stats from "@/components/containers/stats/Stats";
 import Career from "@/components/containers/career/Career";
+import Core from "@/components/containers/core/Core";
 
 export default function Home() {
   return (
@@ -20,6 +21,10 @@ export default function Home() {
 
       <section id="career">
         <Career />
+      </section>
+
+      <section id="coreSkill">
+        <Core />
       </section>
     </main>
   );
