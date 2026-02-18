@@ -1,6 +1,7 @@
 import Hero from "@/components/containers/hero/Hero";
 import Who from "@/components/containers/who/Who";
 import Stats from "@/components/containers/stats/Stats";
+import Career from "@/components/containers/career/Career";
 
 export default function Home() {
   return (
@@ -15,6 +16,10 @@ export default function Home() {
 
       <section id="stats">
         <Stats />
+      </section>
+
+      <section id="career">
+        <Career />
       </section>
     </main>
   );
