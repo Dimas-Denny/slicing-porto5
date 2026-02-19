@@ -1,3 +1,4 @@
+import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/containers/hero/Hero";
 import Who from "@/components/containers/who/Who";
 import Stats from "@/components/containers/stats/Stats";
@@ -12,8 +13,17 @@ import Drop from "@/components/containers/drophere/Drop";
 export default function Home() {
   return (
     <main className="px-6 py-4">
-      <section id="hero">
-        <Hero />
+      <div className="-mx-6 -mt-4">
+        <Navbar />
+      </div>
+
+      <section id="home" className="relative overflow-hidden -mx-6">
+        <div className="absolute inset-0 bg-[url('/png/background.png')] bg-cover bg-center bg-no-repeat" />
+        <div className="absolute inset-0 bg-black/80" />
+
+        <div className="relative z-10 px-6 pb-10 pt-6">
+          <Hero />
+        </div>
       </section>
 
       <section id="who">

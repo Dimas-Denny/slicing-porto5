@@ -6,7 +6,7 @@ import cornerEnd from "@/public/svg/1.svg";
 
 export default function Hero() {
   return (
-    <section id="home" className="mt-10 text-center">
+    <section id="home" className="mt-24 text-center">
       <div className="flex items-center justify-center">
         <div
           className="
@@ -120,10 +120,31 @@ export default function Hero() {
         master modern web programming and bring their ideas to life.
       </p>
       <Button variant="gradient" className="w-full h-16 mt-6 text-xl">
-        View Portofolio
+        View Portfolio
       </Button>
-      <div className="mt-14">
-        <Image alt="avatarplay" src={avatarplay} />
+
+      <div className="relative">
+        <div
+          className="
+    pointer-events-none absolute
+    left-1/2 -translate-x-1/2
+    -top-24
+    h-36
+    w-[100vw]
+    overflow-hidden
+  "
+        >
+          <Image
+            src="/png/waves.png"
+            alt="waves"
+            fill
+            className="object-cover object-top opacity-95 brightness-150 contrast-110 scale-[1.06]"
+          />
+        </div>
+
+        <div className="relative z-10 mt-14">
+          <Image alt="avatarplay" src={avatarplay} className="w-full" />
+        </div>
       </div>
     </section>
   );
