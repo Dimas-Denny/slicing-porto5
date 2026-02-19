@@ -31,10 +31,10 @@ export default function ContactPage() {
       <section className="mx-auto w-full max-w-105">
         {/* Header */}
         <header>
-          <h1 className="text-3xl font-extrabold tracking-tight text-white">
+          <h1 className="text-4xl font-extrabold tracking-tight text-white">
             Contact Me
           </h1>
-          <p className="mt-4 max-w-85 text-[13px] leading-relaxed text-neutral-200">
+          <p className="mt-4 max-w-85 text-[15px] leading-relaxed text-neutral-200">
             Feel free to drop a message for any inquiries <br />
             or collaborations.
           </p>
@@ -63,7 +63,7 @@ export default function ContactPage() {
                     onChange={(e) => onChange("message", e.target.value)}
                     placeholder="Message"
                     className={cn(
-                      "h-28 w-full resize-none bg-transparent",
+                      "h-36 w-full resize-none bg-transparent",
                       "text-[13px] text-white/90 placeholder:text-neutral-200",
                       "outline-none",
                     )}
@@ -101,17 +101,19 @@ function Field({
   onChange: (v: string) => void;
 }) {
   return (
-    <div className="rounded-2xl bg-[#131317] px-4 py-3 ring-1 ring-white/5">
-      <input
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className={cn(
-          "w-full bg-transparent",
-          "text-[13px] text-white/90 placeholder:text-white/35",
-          "outline-none",
-        )}
-      />
-    </div>
+    <section id="contact">
+      <div className="rounded-2xl bg-black/60 px-4 py-3 ring-1 ring-white/5">
+        <input
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          className={cn(
+            "w-full bg-transparent",
+            "text-[13px] text-white/90 placeholder:text-neutral-200",
+            "outline-none",
+          )}
+        />
+      </div>
+    </section>
   );
 }

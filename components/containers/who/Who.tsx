@@ -1,6 +1,6 @@
 export default function Who() {
   return (
-    <main>
+    <section id="about">
       <div className="text-4xl mt-14 font-extrabold">Who am I?</div>
       <p className="font-semibold text-md text-neutral-200 mt-6 mx-auto leading-8 tracking-wide">
         Hi, I’m Alex, a Front-End Developer & Web Programming Instructor based
@@ -12,6 +12,6 @@ export default function Who() {
         SaaS. I am proficient in modern front-end technologies, clean coding
         practices, and performance optimization.
       </p>
-    </main>
+    </section>
   );
 }

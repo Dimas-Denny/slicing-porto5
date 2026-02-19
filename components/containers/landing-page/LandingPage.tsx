@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Experience() {
   return (
-    <section className="w-full py-14 mt-16">
+    <section id="projects" className="w-full py-14 mt-16">
       <div className="mx-auto w-full max-w-md px-4 text-left">
         <h2 className="text-4xl font-extrabold tracking-tight text-white">
           Experience in Front-

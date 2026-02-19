@@ -107,7 +107,7 @@ export default function Core() {
   ];
 
   return (
-    <section className="w-full py-12">
+    <section id="skills" className="w-full py-12">
       <div className="mx-auto w-full max-w-5xl px-4 text-center">
         <h2 className="text-4xl font-extrabold tracking-tight text-white">
           My Core Skill

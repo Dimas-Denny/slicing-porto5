@@ -99,12 +99,11 @@ function TestimonyRow({
   const viewportRef = React.useRef<HTMLDivElement | null>(null);
   const [active, setActive] = React.useState(0);
 
-  // ✅ set posisi default saat pertama render
+  // default position
   React.useEffect(() => {
     const el = viewportRef.current;
     if (!el) return;
 
-    // pakai rAF biar ukuran sudah siap
     const id = requestAnimationFrame(() => {
       el.scrollLeft = initialOffset;
     });

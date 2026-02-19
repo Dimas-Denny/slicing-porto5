@@ -6,7 +6,7 @@ import cornerEnd from "@/public/svg/1.svg";
 
 export default function Hero() {
   return (
-    <main className="mt-10 text-center">
+    <section id="home" className="mt-10 text-center">
       <div className="flex items-center justify-center">
         <div
           className="
@@ -125,6 +125,6 @@ export default function Hero() {
       <div className="mt-14">
         <Image alt="avatarplay" src={avatarplay} />
       </div>
-    </main>
+    </section>
   );
 }
