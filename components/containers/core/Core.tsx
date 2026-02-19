@@ -278,7 +278,7 @@ function SkillsBars({ skills }: { skills: Skill[] }) {
 
             <div className="h-3 w-full rounded-full bg-neutral-800">
               <div
-                className="h-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 "
+                className="h-3 rounded-full bg-linear-to-r from-pink-500 to-purple-500 "
                 style={{ width: `${value}%` }}
               />
             </div>
