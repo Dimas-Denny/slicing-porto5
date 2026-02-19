@@ -3,6 +3,7 @@ import Who from "@/components/containers/who/Who";
 import Stats from "@/components/containers/stats/Stats";
 import Career from "@/components/containers/career/Career";
 import Core from "@/components/containers/core/Core";
+import Comparison from "@/components/containers/comparison/Comparison";
 
 export default function Home() {
   return (
@@ -25,6 +26,10 @@ export default function Home() {
 
       <section id="coreSkill">
         <Core />
+      </section>
+
+      <section id="comparison">
+        <Comparison />
       </section>
     </main>
   );
