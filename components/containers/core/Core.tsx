@@ -14,27 +14,29 @@ type OrbitItem = {
   direction?: 1 | -1;
 };
 
+type Skill = { name: string; value: number };
+
 export default function Core() {
-  // ✅ box + icon
+  // box and icon
   const CARD_W = 96;
   const CARD_H = 48;
   const ICON = 34;
 
-  // ✅ ring
+  // ring
   const RING_INNER = 150;
   const RING_MID = 250;
   const RING_OUTER = 350;
 
-  // ✅ kanvas
+  // canvas
   const CANVAS = 380;
 
-  // ✅ radius biar card “duduk” di ring
+  // radius card
   const innerRadius = RING_INNER / 2 - CARD_H / 2; // 51
   const midRadius = RING_MID / 2 - CARD_H / 2; // 101
   const outerRadius = RING_OUTER / 2 - CARD_H / 2; // 151
 
   const items: OrbitItem[] = [
-    // OUTER ring (350)
+    // outer ring
     {
       key: "js",
       src: "/svg/js.svg",
@@ -54,7 +56,7 @@ export default function Core() {
       direction: -1,
     },
 
-    // MID ring (250) — 360/3 = 120°
+    // mid ring
     {
       key: "html",
       src: "/svg/html.svg",
@@ -70,7 +72,7 @@ export default function Core() {
       alt: "CSS",
       angle: 120,
       radius: midRadius,
-      duration: 18,
+      duration: 16,
       direction: 1,
     },
     {
@@ -79,20 +81,29 @@ export default function Core() {
       alt: "React",
       angle: 240,
       radius: midRadius,
-      duration: 18,
+      duration: 16,
       direction: 1,
     },
 
-    // INNER ring (150)
+    // inner ring
     {
       key: "redux",
       src: "/svg/redux.svg",
       alt: "Redux",
       angle: 0,
       radius: innerRadius,
-      duration: 14,
+      duration: 12,
       direction: -1,
     },
+  ];
+
+  const skills: Skill[] = [
+    { name: "HTML", value: 100 },
+    { name: "Redux", value: 85 },
+    { name: "Javascript", value: 90 },
+    { name: "React", value: 90 },
+    { name: "CSS", value: 80 },
+    { name: "Typescript", value: 70 },
   ];
 
   return (
@@ -135,6 +146,9 @@ export default function Core() {
               iconSize={ICON}
             />
           ))}
+        </div>
+        <div className="mx-auto mt-10 w-full text-left">
+          <SkillsBars skills={skills} />
         </div>
       </div>
     </section>
@@ -206,11 +220,6 @@ function Ring({ size }: { size: number }) {
   );
 }
 
-/**
- * ✅ Dot statis di ring pakai ellipse.svg
- * - size: diameter ring
- * - angles: posisi dot dalam derajat
- */
 function RingDots({
   size,
   angles,
@@ -253,4 +262,33 @@ function RingDots({
       ))}
     </div>
   );
+}
+
+function SkillsBars({ skills }: { skills: Skill[] }) {
+  return (
+    <div className="space-y-6">
+      {skills.map((s) => {
+        const value = clamp(s.value, 0, 100);
+        return (
+          <div key={s.name}>
+            <div className="mb-2 flex items-center justify-between">
+              <p className="text-sm font-semibold text-white">{s.name}</p>
+              <p className="text-sm font-semibold text-white">{value}%</p>
+            </div>
+
+            <div className="h-3 w-full rounded-full bg-neutral-800">
+              <div
+                className="h-3 rounded-full bg-gradient-to-r from-pink-500 to-purple-500 "
+                style={{ width: `${value}%` }}
+              />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function clamp(n: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, n));
 }
