@@ -63,7 +63,6 @@ export default function Testimony() {
     [],
   );
 
-  // baris 1 & 2 sama
   const row1 = base;
   const row2 = base;
 
@@ -82,19 +81,36 @@ export default function Testimony() {
         </p>
 
         <div className="mt-10 space-y-8">
-          <TestimonyRow items={row1} />
-          <TestimonyRow items={row2} />
+          <TestimonyRow items={row1} initialOffset={60} />
+          <TestimonyRow items={row2} initialOffset={220} />
         </div>
       </div>
     </section>
   );
 }
 
-/* ===================== Row Carousel ===================== */
-
-function TestimonyRow({ items }: { items: Testi[] }) {
+function TestimonyRow({
+  items,
+  initialOffset = 0,
+}: {
+  items: Testi[];
+  initialOffset?: number;
+}) {
   const viewportRef = React.useRef<HTMLDivElement | null>(null);
   const [active, setActive] = React.useState(0);
+
+  // ✅ set posisi default saat pertama render
+  React.useEffect(() => {
+    const el = viewportRef.current;
+    if (!el) return;
+
+    // pakai rAF biar ukuran sudah siap
+    const id = requestAnimationFrame(() => {
+      el.scrollLeft = initialOffset;
+    });
+
+    return () => cancelAnimationFrame(id);
+  }, [initialOffset]);
 
   React.useEffect(() => {
     const el = viewportRef.current;
@@ -112,7 +128,6 @@ function TestimonyRow({ items }: { items: Testi[] }) {
 
       cards.forEach((card, index) => {
         const cardCenter = card.offsetLeft + card.clientWidth / 2;
-
         const distance = Math.abs(center - cardCenter);
 
         if (distance < closestDistance) {
@@ -124,7 +139,7 @@ function TestimonyRow({ items }: { items: Testi[] }) {
       setActive(closestIndex);
     };
 
-    el.addEventListener("scroll", handleScroll);
+    el.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => el.removeEventListener("scroll", handleScroll);
@@ -169,8 +184,6 @@ function TestimonyRow({ items }: { items: Testi[] }) {
   );
 }
 
-/* ===================== Card ===================== */
-
 function TestimonyCard({ t, active }: { t: Testi; active: boolean }) {
   return (
     <div data-card className="w-75 shrink-0 rounded-3xl">
@@ -182,7 +195,7 @@ function TestimonyCard({ t, active }: { t: Testi; active: boolean }) {
             : "bg-transparent"
         }`}
       >
-        {/* Inner card tetap hitam */}
+        {/* Inner card hitam */}
         <div className="rounded-3xl bg-black p-6 text-left ring-1 ring-white/10">
           <div className="flex items-start gap-4">
             <div className="relative h-12 w-12 overflow-hidden rounded-full ring-1 ring-white/10">
