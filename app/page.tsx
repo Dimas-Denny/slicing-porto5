@@ -4,6 +4,8 @@ import Stats from "@/components/containers/stats/Stats";
 import Career from "@/components/containers/career/Career";
 import Core from "@/components/containers/core/Core";
 import Comparison from "@/components/containers/comparison/Comparison";
+import LandingPage from "@/components/containers/landing-page/LandingPage";
+import Testimony from "@/components/containers/testimony/Testimony";
 
 export default function Home() {
   return (
@@ -30,6 +32,14 @@ export default function Home() {
 
       <section id="comparison">
         <Comparison />
+      </section>
+
+      <section id="landingpage">
+        <LandingPage />
+      </section>
+
+      <section id="testimony">
+        <Testimony />
       </section>
     </main>
   );

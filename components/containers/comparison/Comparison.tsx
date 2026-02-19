@@ -29,7 +29,7 @@ export default function Comparison() {
         </p>
         <div className="mt-10 rounded-3xl bg-neutral-600 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.55)] ring-1 ring-white/10">
           <div className="grid grid-cols-[1fr_56px_56px] items-center rounded-full bg-linear-to-r from-pink-500 to-purple-500 px-5 py-4 text-white">
-            <p className="text-left text-sm font-semibold">SKill</p>
+            <p className="text-center text-sm font-semibold">SKill</p>
             <p className="text-center text-sm font-semibold">Me</p>
             <p className="text-center text-sm font-semibold">Other</p>
           </div>
