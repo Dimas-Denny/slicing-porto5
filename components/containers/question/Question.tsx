@@ -124,7 +124,7 @@ export default function FAQPage() {
   );
 
   return (
-    <main className="min-h-screen bg-black px-5 py-10">
+    <main className=" bg-black px-5 py-10">
       <section className="mx-auto w-full max-w-105">
         <header className="text-center">
           <h1 className="text-3xl font-extrabold tracking-tight text-white">

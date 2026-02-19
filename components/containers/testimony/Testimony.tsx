@@ -81,8 +81,8 @@ export default function Testimony() {
         </p>
 
         <div className="mt-10 space-y-8">
-          <TestimonyRow items={row1} initialOffset={60} />
-          <TestimonyRow items={row2} initialOffset={220} />
+          <TestimonyRow items={row1} />
+          <TestimonyRow items={row2} />
         </div>
       </div>
     </section>

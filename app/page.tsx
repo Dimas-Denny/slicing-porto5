@@ -7,6 +7,7 @@ import Comparison from "@/components/containers/comparison/Comparison";
 import LandingPage from "@/components/containers/landing-page/LandingPage";
 import Testimony from "@/components/containers/testimony/Testimony";
 import Question from "@/components/containers/question/Question";
+import Drop from "@/components/containers/drophere/Drop";
 
 export default function Home() {
   return (
@@ -45,6 +46,10 @@ export default function Home() {
 
       <section id="question">
         <Question />
+      </section>
+
+      <section id="drop">
+        <Drop />
       </section>
     </main>
   );
