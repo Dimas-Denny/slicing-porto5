@@ -25,7 +25,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         gradient:
           "rounded-full text-white font-semibold \
-   bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 \
+   bg-gradient-to-r from-pink-500 to-purple-600 \
    shadow-[0_10px_30px_rgba(168,85,247,0.35)] \
    hover:brightness-110 active:brightness-95 \
    focus-visible:ring-[3px] focus-visible:ring-purple-500/40",

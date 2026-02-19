@@ -20,15 +20,15 @@ export default function Core() {
   const CARD_H = 48;
   const ICON = 34;
 
-  // ✅ ring (punya kamu)
+  // ✅ ring
   const RING_INNER = 150;
   const RING_MID = 250;
   const RING_OUTER = 350;
 
-  // ✅ kanvas harus >= ring terbesar (biar gak kepotong)
+  // ✅ kanvas
   const CANVAS = 380;
 
-  // ✅ radius biar pas di garis ring (box “duduk” di ring)
+  // ✅ radius biar card “duduk” di ring
   const innerRadius = RING_INNER / 2 - CARD_H / 2; // 51
   const midRadius = RING_MID / 2 - CARD_H / 2; // 101
   const outerRadius = RING_OUTER / 2 - CARD_H / 2; // 151
@@ -39,7 +39,7 @@ export default function Core() {
       key: "js",
       src: "/svg/js.svg",
       alt: "JavaScript",
-      angle: 185,
+      angle: 240,
       radius: outerRadius,
       duration: 20,
       direction: -1,
@@ -48,18 +48,18 @@ export default function Core() {
       key: "ts",
       src: "/svg/ts.svg",
       alt: "TypeScript",
-      angle: 120,
+      angle: 60,
       radius: outerRadius,
       duration: 20,
       direction: -1,
     },
 
-    // MID ring (250)
+    // MID ring (250) — 360/3 = 120°
     {
       key: "html",
       src: "/svg/html.svg",
       alt: "HTML",
-      angle: 315,
+      angle: 0,
       radius: midRadius,
       duration: 16,
       direction: 1,
@@ -68,36 +68,36 @@ export default function Core() {
       key: "css",
       src: "/svg/css3.svg",
       alt: "CSS",
-      angle: 40,
+      angle: 120,
       radius: midRadius,
-      duration: 16,
+      duration: 18,
       direction: 1,
     },
     {
       key: "react",
       src: "/svg/react.svg",
       alt: "React",
-      angle: 235,
+      angle: 240,
       radius: midRadius,
       duration: 18,
       direction: 1,
     },
 
-    // INNER ring (150) — OpenAI
+    // INNER ring (150)
     {
-      key: "openai",
-      src: "/svg/openai.svg",
-      alt: "OpenAI",
+      key: "redux",
+      src: "/svg/redux.svg",
+      alt: "Redux",
       angle: 0,
       radius: innerRadius,
       duration: 14,
-      direction: 1,
+      direction: -1,
     },
   ];
 
   return (
     <section className="w-full py-12">
-      <div className="mx-auto w-full max-w-95 px-4 text-center">
+      <div className="mx-auto w-full max-w-5xl px-4 text-center">
         <h2 className="text-4xl font-extrabold tracking-tight text-white">
           My Core Skill
         </h2>
@@ -112,12 +112,20 @@ export default function Core() {
           {/* glow */}
           <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.22)_0%,transparent_62%)] blur-3xl opacity-55" />
 
-          {/* rings */}
           <Ring size={RING_OUTER} />
-          <Ring size={RING_MID} />
-          <Ring size={RING_INNER} />
+          <RingDots
+            size={RING_OUTER}
+            dotSize={10}
+            angles={[58, 168, 214, 318]}
+          />
 
-          {/* orbit items */}
+          <Ring size={RING_MID} />
+          <RingDots size={RING_MID} dotSize={9} angles={[0, 90, 225, 270]} />
+
+          <Ring size={RING_INNER} />
+          <RingDots size={RING_INNER} dotSize={8} angles={[110, 250]} />
+
+          {/* orbit icons */}
           {items.map((item) => (
             <OrbitIcon
               key={item.key}
@@ -153,7 +161,7 @@ function OrbitIcon({
       animate={{ rotate: dir === 1 ? 360 : -360 }}
       transition={{ duration: item.duration, repeat: Infinity, ease: "linear" }}
     >
-      {/* arm: sebar posisi di lingkaran */}
+      {/* arm */}
       <div
         style={{
           transform: `rotate(${item.angle}deg) translateX(${item.radius}px)`,
@@ -161,7 +169,7 @@ function OrbitIcon({
       >
         {/* card tetap lurus */}
         <motion.div
-          className="flex items-center justify-center rounded-xl border border-fuchsia-400/45 bg-black/40 backdrop-blur shadow-[0_0_0_1px_rgba(236,72,153,0.10)]"
+          className="flex items-center justify-center rounded-lg border border-fuchsia-400/45 bg-black/40 backdrop-blur shadow-[0_0_0_1px_rgba(236,72,153,0.10)]"
           style={{
             width: cardW,
             height: cardH,
@@ -195,5 +203,54 @@ function Ring({ size }: { size: number }) {
       className="pointer-events-none absolute rounded-full border border-white/10"
       style={{ width: size, height: size }}
     />
+  );
+}
+
+/**
+ * ✅ Dot statis di ring pakai ellipse.svg
+ * - size: diameter ring
+ * - angles: posisi dot dalam derajat
+ */
+function RingDots({
+  size,
+  angles,
+  dotSize = 10,
+  src = "/svg/ellipse.svg",
+  opacity = 0.9,
+}: {
+  size: number;
+  angles: number[];
+  dotSize?: number;
+  src?: string;
+  opacity?: number;
+}) {
+  const r = size / 2;
+
+  return (
+    <div
+      className="pointer-events-none absolute left-1/2 top-1/2 z-10"
+      style={{ width: size, height: size, transform: "translate(-50%, -50%)" }}
+      aria-hidden="true"
+    >
+      {angles.map((a, idx) => (
+        <div
+          key={`${size}-${a}-${idx}`}
+          className="absolute left-1/2 top-1/2"
+          style={{
+            transform: `translate(-50%, -50%) rotate(${a}deg) translateX(${r}px)`,
+          }}
+        >
+          <Image
+            src={src}
+            alt=""
+            width={dotSize}
+            height={dotSize}
+            draggable={false}
+            className="drop-shadow-[0_0_10px_rgba(236,72,153,0.35)]"
+            style={{ opacity }}
+          />
+        </div>
+      ))}
+    </div>
   );
 }

@@ -13,7 +13,7 @@ export default function Hero() {
           relative inline-flex
           p-0.5
           rounded-full
-          bg-linear-to-r from-pink-500 via-purple-500 to-violet-500
+          bg-linear-to-r from-pink-500 to-purple-500
           shadow-[0_0_30px_rgba(168,85,247,0.4)]
         "
         >
@@ -73,9 +73,9 @@ export default function Hero() {
             className="absolute -bottom-1 -right-1"
           />
         </span>
-        <span className="relative inline-block  p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
+        <span className="relative inline-block  p-0.75 bg-linear-to-r from-pink-500 to-purple-500">
           <span className="block  bg-black px-2 py-1 leading-none">
-            <span className="bg-linear-to-r from-pink-500 via-purple-500 to-violet-500 bg-clip-text text-transparent font-bold leading-none">
+            <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-bold leading-none">
               End Developer
             </span>
           </span>
