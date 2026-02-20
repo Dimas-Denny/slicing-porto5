@@ -36,7 +36,7 @@ export default function Hero() {
       <h1 className="font-bold text-[48px] mt-10 tracking-[-0.02em]">
         <span>I am a&nbsp;</span>
 
-        {/* ===== MOBILE (<md): tetap 2 box seperti sekarang ===== */}
+        {/* ===== MOBILE =====*/}
         <span className="md:hidden">
           <span className="relative inline-block p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
             <span className="block bg-black px-2 py-1 leading-none">
@@ -113,7 +113,7 @@ export default function Hero() {
           </span>
         </span>
 
-        {/* ===== DESKTOP (md+): 1 box gabungan ===== */}
+        {/* ===== DESKTOP ===== */}
         <span className="hidden md:inline-block relative p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
           <span className="block bg-black px-3 py-1 leading-none">
             <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-bold leading-none">
@@ -121,7 +121,6 @@ export default function Hero() {
             </span>
           </span>
 
-          {/* corners tetap ada */}
           <Image
             src={cornerFront}
             alt=""
