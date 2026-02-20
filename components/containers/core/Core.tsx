@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -16,25 +16,63 @@ type OrbitItem = {
 
 type Skill = { name: string; value: number };
 
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia(query);
+    const onChange = () => setMatches(mql.matches);
+
+    onChange();
+    mql.addEventListener?.("change", onChange);
+    return () => mql.removeEventListener?.("change", onChange);
+  }, [query]);
+
+  return matches;
+}
+
 export default function Core() {
-  // box and icon
-  const CARD_W = 96;
-  const CARD_H = 48;
-  const ICON = 34;
+  const isMdUp = useMediaQuery("(min-width: 768px)");
 
-  // ring
-  const RING_INNER = 150;
-  const RING_MID = 250;
-  const RING_OUTER = 350;
+  /**
+   * ✅ Yang berubah cuma ukuran:
+   * - CARD_W / CARD_H / ICON
+   * - RING_* dan CANVAS
+   *
+   * ✅ Display orbit, angles, duration, direction, RingDots angles/dotSize tetap sama.
+   */
+  const sizes = useMemo(() => {
+    if (isMdUp) {
+      return {
+        CARD_W: 150,
+        CARD_H: 70,
+        ICON: 48,
+        RING_INNER: 210,
+        RING_MID: 320,
+        RING_OUTER: 440,
+        CANVAS: 520,
+      };
+    }
+    return {
+      CARD_W: 96,
+      CARD_H: 48,
+      ICON: 34,
+      RING_INNER: 150,
+      RING_MID: 250,
+      RING_OUTER: 350,
+      CANVAS: 380,
+    };
+  }, [isMdUp]);
 
-  // canvas
-  const CANVAS = 380;
+  const { CARD_W, CARD_H, ICON, RING_INNER, RING_MID, RING_OUTER, CANVAS } =
+    sizes;
 
-  // radius card
-  const innerRadius = RING_INNER / 2 - CARD_H / 2; // 51
-  const midRadius = RING_MID / 2 - CARD_H / 2; // 101
-  const outerRadius = RING_OUTER / 2 - CARD_H / 2; // 151
+  // radius card (otomatis ikut besar sesuai ring & card height)
+  const innerRadius = RING_INNER / 2 - CARD_H / 2;
+  const midRadius = RING_MID / 2 - CARD_H / 2;
+  const outerRadius = RING_OUTER / 2 - CARD_H / 2;
 
+  // ✅ Orbit items (TETAP sama: angle, duration, direction)
   const items: OrbitItem[] = [
     // outer ring
     {
@@ -108,47 +146,61 @@ export default function Core() {
 
   return (
     <section id="skills" className="w-full py-12">
-      <div className="mx-auto w-full max-w-5xl px-4 text-center">
-        <h2 className="text-4xl font-extrabold tracking-tight text-white">
-          My Core Skill
-        </h2>
-        <p className="mt-3 text-lg text-neutral-200 leading-relaxed">
-          An overview of the key technologies and frameworks I specialize in
-        </p>
-
-        <div
-          className="relative mx-auto mt-10 grid place-items-center"
-          style={{ width: CANVAS, height: CANVAS }}
-        >
-          {/* glow */}
-          <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.22)_0%,transparent_62%)] blur-3xl opacity-55" />
-
-          <Ring size={RING_OUTER} />
-          <RingDots
-            size={RING_OUTER}
-            dotSize={10}
-            angles={[58, 168, 214, 318]}
-          />
-
-          <Ring size={RING_MID} />
-          <RingDots size={RING_MID} dotSize={9} angles={[0, 90, 225, 270]} />
-
-          <Ring size={RING_INNER} />
-          <RingDots size={RING_INNER} dotSize={8} angles={[110, 250]} />
-
-          {/* orbit icons */}
-          {items.map((item) => (
-            <OrbitIcon
-              key={item.key}
-              item={item}
-              cardW={CARD_W}
-              cardH={CARD_H}
-              iconSize={ICON}
-            />
-          ))}
+      <div className="mx-auto w-full max-w-6xl px-4">
+        <div className="text-center">
+          <h2 className="text-4xl font-extrabold tracking-tight text-white">
+            My Core Skill
+          </h2>
+          <p className="mt-3 text-lg text-neutral-200 leading-relaxed">
+            An overview of the key technologies and frameworks I specialize in
+          </p>
         </div>
-        <div className="mx-auto mt-10 w-full text-left">
-          <SkillsBars skills={skills} />
+
+        {/* layout md+ bersandingan (orbit kiri, bar kanan) */}
+        <div className="mt-10 grid gap-10 md:grid-cols-[1.15fr_0.85fr] md:items-center">
+          {/* ORBIT (display & dots TETAP) */}
+          <div className="flex justify-center md:justify-start">
+            <div
+              className="relative grid place-items-center"
+              style={{ width: CANVAS, height: CANVAS }}
+            >
+              {/* glow */}
+              <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.22)_0%,transparent_62%)] blur-3xl opacity-55" />
+
+              <Ring size={RING_OUTER} />
+              <RingDots
+                size={RING_OUTER}
+                dotSize={10}
+                angles={[58, 168, 214, 318]}
+              />
+
+              <Ring size={RING_MID} />
+              <RingDots
+                size={RING_MID}
+                dotSize={9}
+                angles={[0, 90, 225, 270]}
+              />
+
+              <Ring size={RING_INNER} />
+              <RingDots size={RING_INNER} dotSize={8} angles={[110, 250]} />
+
+              {/* orbit icons */}
+              {items.map((item) => (
+                <OrbitIcon
+                  key={item.key}
+                  item={item}
+                  cardW={CARD_W}
+                  cardH={CARD_H}
+                  iconSize={ICON}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* PROGRESS BAR */}
+          <div className="mx-auto w-full max-w-md text-left md:mx-0">
+            <SkillsBars skills={skills} />
+          </div>
         </div>
       </div>
     </section>
@@ -278,7 +330,7 @@ function SkillsBars({ skills }: { skills: Skill[] }) {
 
             <div className="h-3 w-full rounded-full bg-neutral-800">
               <div
-                className="h-3 rounded-full bg-linear-to-r from-pink-500 to-purple-500 "
+                className="h-3 rounded-full bg-linear-to-r from-pink-500 to-purple-500"
                 style={{ width: `${value}%` }}
               />
             </div>

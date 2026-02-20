@@ -22,7 +22,9 @@ function TimelineItem({ item, index }: { item: CareerItem; index: number }) {
   const activeGlow =
     "drop-shadow(0 0 8px rgba(236,72,153,0.8)) drop-shadow(0 0 20px rgba(168,85,247,0.7))";
 
-  const dotOffset = "mt-8";
+  // ✅ Mobile: dot turun (mt-8)
+  // ✅ md+: dot mentok atas (mt-0) supaya start garis & dot sejajar
+  const dotOffset = "mt-8 md:mt-4";
 
   return (
     <motion.div
@@ -53,14 +55,18 @@ function TimelineItem({ item, index }: { item: CareerItem; index: number }) {
         <CardHeader className="px-6 pt-7 pb-0">
           <CardTitle className="text-2xl font-semibold">{item.title}</CardTitle>
 
-          <div className="mt-4 text-lg flex items-center gap-3">
-            <Image src={Company} alt="company icon" className="w-5 h-5" />
-            <span>{item.company}</span>
-          </div>
+          {/* ✅ Mobile: stack (kolom) */}
+          {/* ✅ md+: company & date bersebelahan */}
+          <div className="mt-4 flex flex-col gap-3 text-lg md:flex-row md:items-center md:gap-10">
+            <div className="flex items-center gap-3">
+              <Image src={Company} alt="company icon" className="w-5 h-5" />
+              <span>{item.company}</span>
+            </div>
 
-          <div className="mt-3 flex text-lg items-center gap-3">
-            <Image src={DateIcon} alt="calendar icon" className="w-5 h-5" />
-            <span>{item.date}</span>
+            <div className="flex items-center gap-3">
+              <Image src={DateIcon} alt="calendar icon" className="w-5 h-5" />
+              <span>{item.date}</span>
+            </div>
           </div>
         </CardHeader>
 
@@ -131,9 +137,11 @@ export default function Career() {
 
       <div className="w-full mt-12">
         <div className="relative">
-          {/* Vertical Line */}
+          {/* ✅ Vertical Line */}
+          {/* Mobile: mulai top-8 (ngikut dot yang mt-8) */}
+          {/* md+: mulai top-0 (ngikut dot yang md:mt-0) */}
           <div
-            className={`absolute left-4.5 top-8 bottom-0 w-0.75 rounded-full ${lineGradient}`}
+            className={`absolute left-4.5 top-8 md:top-8 bottom-0 w-0.75 rounded-full ${lineGradient}`}
           />
 
           <div className="space-y-6">
