@@ -32,15 +32,96 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* ================= TITLE ================= */}
       <h1 className="font-bold text-[48px] mt-10 tracking-[-0.02em]">
-        I am a{" "}
-        <span className="relative inline-block  p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
-          <span className="block  bg-black px-2 py-1 leading-none">
+        <span>I am a&nbsp;</span>
+
+        {/* ===== MOBILE (<md): tetap 2 box seperti sekarang ===== */}
+        <span className="md:hidden">
+          <span className="relative inline-block p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
+            <span className="block bg-black px-2 py-1 leading-none">
+              <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-bold leading-none">
+                Front-
+              </span>
+            </span>
+
+            <Image
+              src={cornerFront}
+              alt=""
+              width={14}
+              height={14}
+              className="absolute -top-1 -left-1"
+            />
+            <Image
+              src={cornerFront}
+              alt=""
+              width={14}
+              height={14}
+              className="absolute -top-1 -right-1"
+            />
+            <Image
+              src={cornerFront}
+              alt=""
+              width={14}
+              height={14}
+              className="absolute -bottom-1 -left-1"
+            />
+            <Image
+              src={cornerFront}
+              alt=""
+              width={14}
+              height={14}
+              className="absolute -bottom-1 -right-1"
+            />
+          </span>
+
+          <span className="relative inline-block p-0.75 bg-linear-to-r from-pink-500 to-purple-500">
+            <span className="block bg-black px-2 py-1 leading-none">
+              <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-bold leading-none">
+                End Developer
+              </span>
+            </span>
+
+            <Image
+              src={cornerEnd}
+              alt=""
+              width={14}
+              height={14}
+              className="absolute -top-1 -left-1"
+            />
+            <Image
+              src={cornerEnd}
+              alt=""
+              width={14}
+              height={14}
+              className="absolute -top-1 -right-1"
+            />
+            <Image
+              src={cornerEnd}
+              alt=""
+              width={14}
+              height={14}
+              className="absolute -bottom-1 -left-1"
+            />
+            <Image
+              src={cornerEnd}
+              alt=""
+              width={14}
+              height={14}
+              className="absolute -bottom-1 -right-1"
+            />
+          </span>
+        </span>
+
+        {/* ===== DESKTOP (md+): 1 box gabungan ===== */}
+        <span className="hidden md:inline-block relative p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
+          <span className="block bg-black px-3 py-1 leading-none">
             <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-bold leading-none">
-              Front-
+              Front-End Developer
             </span>
           </span>
 
+          {/* corners tetap ada */}
           <Image
             src={cornerFront}
             alt=""
@@ -48,7 +129,6 @@ export default function Hero() {
             height={14}
             className="absolute -top-1 -left-1"
           />
-
           <Image
             src={cornerFront}
             alt=""
@@ -56,7 +136,6 @@ export default function Hero() {
             height={14}
             className="absolute -top-1 -right-1"
           />
-
           <Image
             src={cornerFront}
             alt=""
@@ -64,7 +143,6 @@ export default function Hero() {
             height={14}
             className="absolute -bottom-1 -left-1"
           />
-
           <Image
             src={cornerFront}
             alt=""
@@ -73,52 +151,17 @@ export default function Hero() {
             className="absolute -bottom-1 -right-1"
           />
         </span>
-        <span className="relative inline-block  p-0.75 bg-linear-to-r from-pink-500 to-purple-500">
-          <span className="block  bg-black px-2 py-1 leading-none">
-            <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-bold leading-none">
-              End Developer
-            </span>
-          </span>
-          <Image
-            src={cornerEnd}
-            alt=""
-            width={14}
-            height={14}
-            className="absolute -top-1 -left-1"
-          />
 
-          <Image
-            src={cornerEnd}
-            alt=""
-            width={14}
-            height={14}
-            className="absolute -top-1 -right-1"
-          />
-
-          <Image
-            src={cornerEnd}
-            alt=""
-            width={14}
-            height={14}
-            className="absolute -bottom-1 -left-1"
-          />
-
-          <Image
-            src={cornerEnd}
-            alt=""
-            width={14}
-            height={14}
-            className="absolute -bottom-1 -right-1"
-          />
-        </span>
         <span className="block">& Web Programming Instructor</span>
       </h1>
+
       <p className="font-bold text-md text-neutral-200 mt-6 mx-auto leading-8 tracking-wide">
         Hi, I’m Alex, a passionate web developer with over{" "}
         <span className="text-neutral-100 text-l">3 years of experience</span>{" "}
         in creating responsive websites. I also teach aspiring developers to
         master modern web programming and bring their ideas to life.
       </p>
+
       <Button
         variant="gradient"
         className="w-full md:w-auto md:px-10 h-16 md:h-12 mt-6 text-xl md:text-lg"
@@ -127,34 +170,36 @@ export default function Hero() {
       </Button>
 
       <div className="relative">
-        <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-24 h-36 md:h-48 md:-top-46 w-screen ">
-          {/* Mobile */}
+        {/* ================= MOBILE WAVES ================= */}
+        <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-24 h-36 w-screen md:hidden">
           <Image
             src="/png/waves.png"
             alt="waves"
             fill
-            className="object-cover object-top opacity-95 brightness-100 contrast-110 scale-[1.15] md:hidden"
-          />
-
-          {/* md ke atas */}
-          <Image
-            src="/png/waves2.png"
-            alt="waves"
-            fill
-            className="hidden md:block  object-cover object-top opacity-95 brightness-100 contrast-110 scale-[1.15]"
+            className="object-cover object-top opacity-95 brightness-100 contrast-110 scale-[1.15]"
           />
         </div>
 
-        <div className="relative z-10 mt-14 md:mt-40 flex justify-center">
+        {/*  Spacer */}
+        <div className="h-0 md:h-40 lg:h-48" />
+
+        {/* ================= DESKTOP WAVES2 ================= */}
+        <div className="pointer-events-none hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-screen">
+          <div className="relative h-40 lg:h-100 lg:mb-100 w-screen overflow-hidden">
+            <Image
+              src="/png/waves2.png"
+              alt="waves"
+              fill
+              className="object-cover object-top opacity-95 brightness-70 contrast-110"
+            />
+          </div>
+        </div>
+
+        <div className="relative z-10 mt-14 md:mt-0 flex justify-center">
           <Image
             alt="avatarplay"
             src={avatarplay}
-            className="
-      w-full
-      md:max-w-3xl
-      lg:max-w-4xl
-      xl:max-w-5xl
-    "
+            className="w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl"
           />
         </div>
       </div>

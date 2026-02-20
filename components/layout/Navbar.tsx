@@ -31,31 +31,30 @@ export default function Navbar() {
           "border-b border-white/10",
         )}
       >
-        <div className="mx-auto w-full max-w-6xl px-4 md:px-12 ">
-          <div className="flex items-center justify-between py-4">
-            {/* Left: Logo */}
-            <Link href="#home" className="flex items-center gap-3">
-              <Image alt="Logo" src={Logo} className="h-10 w-10" />
-            </Link>
+        <div className="w-full px-4 sm:px-6 md:px-20 transition-all duration-300">
+          <div className="grid grid-cols-2 md:grid-cols-[1fr_auto_1fr] items-center py-4">
+            <div className="flex items-center justify-start">
+              <Link href="#home" className="flex items-center gap-3">
+                <Image alt="Logo" src={Logo} className="h-10 w-10" />
+              </Link>
+            </div>
 
-            <div className="hidden md:flex items-center gap-8">
+            {/* Center (desktop only) */}
+            <div className="hidden md:flex items-center justify-center gap-8">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="
-                    text-sm text-white/80 hover:text-white
-                    transition
-                  "
+                  className="text-sm text-white/80 hover:text-white transition"
                 >
                   {item.label}
                 </Link>
               ))}
             </div>
 
-            {/* Right: Actions */}
-            <div className="flex items-center gap-4">
-              {/*  Mobile: mailbox icon button */}
+            {/* Right */}
+            <div className="flex items-center justify-end gap-4">
+              {/* Mobile: mailbox */}
               <Button
                 variant="gradient"
                 size="icon"
@@ -65,15 +64,15 @@ export default function Navbar() {
                 <Image alt="Mailbox" src={Mailbox} className="h-6 w-6" />
               </Button>
 
-              {/*  Desktop: Hire Me button */}
-              <div className="hidden md:flex items-center gap-3 md:px-0">
+              {/* Desktop: Hire Me */}
+              <div className="hidden md:flex md:px-20 items-center gap-3">
                 <Button variant="gradient" className="h-10 rounded-full px-5">
                   <Image alt="Mailbox" src={Mailbox} className="h-4 w-4" />
                   Hire Me
                 </Button>
               </div>
 
-              {/*  Mobile: hamburger */}
+              {/* Mobile: hamburger */}
               <button
                 type="button"
                 onClick={() => setMenuOpen(true)}
