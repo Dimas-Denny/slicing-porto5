@@ -36,7 +36,7 @@ export default function Hero() {
         I am a{" "}
         <span className="relative inline-block  p-0.75 bg-linear-to-r from-pink-500 via-purple-500 to-violet-500">
           <span className="block  bg-black px-2 py-1 leading-none">
-            <span className="bg-linear-to-r from-pink-500 via-purple-500 to-violet-500 bg-clip-text text-transparent font-bold leading-none">
+            <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-bold leading-none">
               Front-
             </span>
           </span>
@@ -119,31 +119,43 @@ export default function Hero() {
         in creating responsive websites. I also teach aspiring developers to
         master modern web programming and bring their ideas to life.
       </p>
-      <Button variant="gradient" className="w-full h-16 mt-6 text-xl">
+      <Button
+        variant="gradient"
+        className="w-full md:w-auto md:px-10 h-16 md:h-12 mt-6 text-xl md:text-lg"
+      >
         View Portfolio
       </Button>
 
       <div className="relative">
-        <div
-          className="
-    pointer-events-none absolute
-    left-1/2 -translate-x-1/2
-    -top-24
-    h-36
-    w-[100vw]
-    overflow-hidden
-  "
-        >
+        <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-24 h-36 md:h-48 md:-top-46 w-screen ">
+          {/* Mobile */}
           <Image
             src="/png/waves.png"
             alt="waves"
             fill
-            className="object-cover object-top opacity-95 brightness-150 contrast-110 scale-[1.06]"
+            className="object-cover object-top opacity-95 brightness-100 contrast-110 scale-[1.15] md:hidden"
+          />
+
+          {/* md ke atas */}
+          <Image
+            src="/png/waves2.png"
+            alt="waves"
+            fill
+            className="hidden md:block  object-cover object-top opacity-95 brightness-100 contrast-110 scale-[1.15]"
           />
         </div>
 
-        <div className="relative z-10 mt-14">
-          <Image alt="avatarplay" src={avatarplay} className="w-full" />
+        <div className="relative z-10 mt-14 md:mt-40 flex justify-center">
+          <Image
+            alt="avatarplay"
+            src={avatarplay}
+            className="
+      w-full
+      md:max-w-3xl
+      lg:max-w-4xl
+      xl:max-w-5xl
+    "
+          />
         </div>
       </div>
     </section>

@@ -17,11 +17,18 @@ export default function Home() {
         <Navbar />
       </div>
 
-      <section id="home" className="relative overflow-hidden -mx-6">
-        <div className="absolute inset-0 bg-[url('/png/background.png')] bg-cover bg-center bg-no-repeat" />
+      <section id="home" className="relative ">
+        <div
+          className="
+      absolute inset-0
+      bg-[url('/png/background.png')]
+      md:bg-[url('/png/background1.png')]
+      bg-cover bg-center bg-no-repeat
+    "
+        />
         <div className="absolute inset-0 bg-black/80" />
 
-        <div className="relative z-10 px-6 pb-10 pt-6">
+        <div className="relative z-10 mx-auto max-w-6xl px-6 pb-10 pt-6">
           <Hero />
         </div>
       </section>
