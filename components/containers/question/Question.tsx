@@ -122,7 +122,10 @@ export default function FAQPage() {
 
   return (
     <main className="bg-black px-4 py-10 md:py-16">
-      <section id="faq" className="mx-auto w-full max-w-md md:max-w-4xl">
+      <section
+        id="faq"
+        className="scroll-mt-24 md:scroll-md-28 mx-auto w-full max-w-md md:max-w-4xl"
+      >
         <header className="text-center">
           <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
             Frequently Asked Question

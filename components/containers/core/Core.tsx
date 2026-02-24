@@ -151,7 +151,7 @@ export default function Core() {
       {/* CONTENT */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-20">
         <div className="text-center">
-          <h2 className="text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white">
             My Core Skill
           </h2>
           <p className="mt-3 text-lg text-neutral-200 leading-relaxed">

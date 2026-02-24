@@ -123,7 +123,9 @@ export default function Career() {
     <section className="mt-30 w-full">
       <div className="w-full px-4 sm:px-6 md:px-20">
         <div className="text-center">
-          <div className="text-4xl font-extrabold">Career Journey</div>
+          <div className="text-4xl md:text-5xl font-extrabold">
+            Career Journey
+          </div>
           <h1 className="mt-6 text-xl leading-8 text-neutral-200">
             A visual timeline of key milestones and experiences from over the
             years.
