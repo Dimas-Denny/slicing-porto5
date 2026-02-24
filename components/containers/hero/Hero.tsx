@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section id="home" className="relative mt-24 text-center">
       <div className="pointer-events-none hidden md:block fixed brightness-100 right-0 top-40 z-0">
-        <Image src={EllipseBig} alt="" className="w-150 opacity-40" />
+        <Image src={EllipseBig} alt="" className="w-[600px] opacity-40" />
       </div>
       <div className="flex items-center justify-center">
         <div
@@ -81,7 +81,7 @@ export default function Hero() {
 
           <span className="relative inline-block p-0.75 bg-linear-to-r from-pink-500 to-purple-500">
             <span className="block bg-black px-2 py-1 leading-none">
-              <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent font-bold leading-none">
+              <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-[45px] text-transparent font-bold leading-none">
                 End Developer
               </span>
             </span>
