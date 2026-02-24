@@ -68,7 +68,7 @@ export default function Experience() {
             Development
           </h2>
 
-          <p className="mt-4 md:mt-2 text-md leading-relaxed text-neutral-200 md:max-w-md md:text-right">
+          <p className="mt-4 md:mt-2 text-md leading-8 text-neutral-200 md:max-w-md md:text-right">
             I have experience developing 30+ web projects across various
             industries, including marketplaces, health, fashion, sports, and
             more. Implemented 1000+ responsive web pages with interactive
