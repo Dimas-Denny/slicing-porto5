@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+🎨 Design Reference
+
+FIGMA design : figma.com/design/p52eJQX06YEzLIHaljatDs/Portfolio-5---REP?node-id=2210-441096&p=f
+
+Hal yang diperhatikan saat slicing:
+
+Layout consistency (grid & spacing)
+Typography scale
+Color system
+Responsive behavior
+Component reusability
+
 ## Getting Started
 
 First, run the development server:
