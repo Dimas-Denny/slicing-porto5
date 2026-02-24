@@ -59,7 +59,10 @@ const PROJECTS: Project[] = [
 
 export default function Experience() {
   return (
-    <section id="projects" className="w-full py-14 mt-16">
+    <section
+      id="projects"
+      className="w-full py-14 mt-16 scroll-mt-24 md:scroll-mt-28"
+    >
       <div className="mx-auto w-full max-w-md md:max-w-6xl text-left">
         <div className="md:flex md:items-start md:justify-between md:gap-14">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">

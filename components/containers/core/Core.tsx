@@ -134,7 +134,10 @@ export default function Core() {
   ];
 
   return (
-    <section id="skills" className="relative w-full py-12 overflow-hidden">
+    <section
+      id="skills"
+      className="relative w-full py-12 overflow-hidden mt-20 scroll-mt-24 md:scroll-mt-28"
+    >
       <div className="pointer-events-none absolute -top-40 -left-40 md:-top-56 md:-left-56 z-0">
         <Image
           src="/png/ellipsecore.png"
