@@ -61,7 +61,7 @@ export default function Experience() {
   return (
     <section
       id="projects"
-      className="w-full py-14 mt-16 scroll-mt-24 md:scroll-mt-28"
+      className="w-full px-4 py-14 mt-16 scroll-mt-24 md:scroll-mt-28"
     >
       <div className="mx-auto w-full max-w-md md:max-w-6xl text-left">
         <div className="md:flex md:items-start md:justify-between md:gap-14">
