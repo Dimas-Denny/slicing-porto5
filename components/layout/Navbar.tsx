@@ -8,6 +8,7 @@ import Mailbox from "@/public/svg/mailbox.svg";
 import Hamburger from "@/public/svg/hamburger.svg";
 import { Button } from "@/components/ui/button";
 import MobileMenu from "@/components/layout/MobileMenu";
+import ContactModal from "@/components/modals/ContactModal";
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
@@ -21,13 +22,17 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [contactOpen, setContactOpen] = useState(false);
+
+  const openContact = () => setContactOpen(true);
+  const closeContact = () => setContactOpen(false);
 
   return (
     <>
       <nav
         className={cn(
           "fixed top-0 left-0 right-0 z-50",
-          "bg-black/20 backdrop-blur-md supports-[backdrop-filter]:backdrop-blur-md",
+          "bg-black/20 backdrop-blur-md supports-backdrop-filter:backdrop-blur-md",
           "border-b border-white/10",
         )}
       >
@@ -54,19 +59,30 @@ export default function Navbar() {
 
             {/* Right */}
             <div className="flex items-center justify-end gap-4">
-              {/* Mobile: mailbox */}
+              {/* Mobile: mailbox (open contact modal) */}
               <Button
                 variant="gradient"
                 size="icon"
                 className="h-12 w-12 rounded-full md:hidden"
                 aria-label="Open contact"
+                onClick={() => {
+                  setMenuOpen(false);
+                  openContact();
+                }}
               >
                 <Image alt="Mailbox" src={Mailbox} className="h-6 w-6" />
               </Button>
 
-              {/* Desktop: Hire Me */}
-              <div className="hidden md:flex md:px-20 items-center gap-3">
-                <Button variant="gradient" className="h-10 rounded-full px-5">
+              {/* Desktop: Hire Me (open contact modal) */}
+              <div className="hidden md:flex items-center gap-3">
+                <Button
+                  variant="gradient"
+                  className="h-10 rounded-full px-5"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    openContact();
+                  }}
+                >
                   <Image alt="Mailbox" src={Mailbox} className="h-4 w-4" />
                   Hire Me
                 </Button>
@@ -86,7 +102,24 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <MobileMenu
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        onContact={() => {
+          // ✅ ini yang sebelumnya "Function not implemented"
+          setMenuOpen(false);
+          setContactOpen(true);
+        }}
+      />
+
+      <ContactModal
+        open={contactOpen}
+        onClose={closeContact}
+        onCloseAll={() => {
+          setMenuOpen(false);
+          setContactOpen(false);
+        }}
+      />
     </>
   );
 }

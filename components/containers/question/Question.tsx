@@ -66,11 +66,8 @@ function FaqCard({
       <div
         className={cn(
           "rounded-2xl",
-
           "bg-neutral-500",
-
           !open && "border border-white/10",
-
           "px-5 py-4",
         )}
       >
@@ -124,20 +121,19 @@ export default function FAQPage() {
   );
 
   return (
-    <main className=" bg-black px-5 py-10">
-      <section id="faq" className="mx-auto w-full max-w-105">
+    <main className="bg-black px-4 py-10 md:py-16">
+      <section id="faq" className="mx-auto w-full max-w-md md:max-w-4xl">
         <header className="text-center">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white">
-            Frequently Asked
-            <br />
-            Question
+          <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">
+            Frequently Asked Question
           </h1>
-          <p className="mx-auto mt-3 max-w-[320px] text-sm leading-relaxed text-neutral-200">
+
+          <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-neutral-200">
             Find answers to some of the frequently asked questions below.
           </p>
         </header>
 
-        <div className="mt-8 space-y-4">
+        <div className="mx-auto mt-8 space-y-4 md:mt-10 md:max-w-3xl">
           {FAQS.map((item, i) => {
             const open = openIndex === i;
             return (

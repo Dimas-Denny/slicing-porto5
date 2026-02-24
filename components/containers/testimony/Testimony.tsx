@@ -81,8 +81,9 @@ export default function Testimony() {
         </p>
 
         <div className="mt-10 space-y-8">
-          <TestimonyRow items={row1} />
-          <TestimonyRow items={row2} />
+          <TestimonyRow items={row1} initialOffset={60} />
+
+          <TestimonyRow items={row2} initialOffset={60 + 2 * 320} />
         </div>
       </div>
     </section>
@@ -156,7 +157,7 @@ function TestimonyRow({
       {/* Left */}
       <button
         onClick={() => scrollByAmount(-320)}
-        className="absolute left-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/15 bg-black/40 p-3 backdrop-blur"
+        className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/15 bg-black/40 p-3 backdrop-blur"
       >
         <Image src="/svg/left.svg" alt="Left" width={18} height={18} />
       </button>
@@ -164,14 +165,14 @@ function TestimonyRow({
       {/* Right */}
       <button
         onClick={() => scrollByAmount(320)}
-        className="absolute right-0 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/15 bg-black/40 p-3 backdrop-blur"
+        className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/15 bg-black/40 p-3 backdrop-blur"
       >
         <Image src="/svg/right.svg" alt="Right" width={18} height={18} />
       </button>
 
       <div
         ref={viewportRef}
-        className="no-scrollbar overflow-x-auto scroll-smooth px-12"
+        className="no-scrollbar overflow-x-auto scroll-smooth px-8 sm:px-4 snap-x snap-mandatory"
       >
         <div className="flex gap-5">
           {items.map((t, i) => (
@@ -185,8 +186,7 @@ function TestimonyRow({
 
 function TestimonyCard({ t, active }: { t: Testi; active: boolean }) {
   return (
-    <div data-card className="w-75 shrink-0 rounded-3xl">
-      {/* Wrapper untuk border */}
+    <div data-card className="w-75 shrink-0 rounded-3xl snap-center">
       <div
         className={`rounded-3xl p-px transition-all duration-300 ${
           active
@@ -194,7 +194,6 @@ function TestimonyCard({ t, active }: { t: Testi; active: boolean }) {
             : "bg-transparent"
         }`}
       >
-        {/* Inner card hitam */}
         <div className="rounded-3xl bg-black p-6 text-left ring-1 ring-white/10">
           <div className="flex items-start gap-4">
             <div className="relative h-12 w-12 overflow-hidden rounded-full ring-1 ring-white/10">

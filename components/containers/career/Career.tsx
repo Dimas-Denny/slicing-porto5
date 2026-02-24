@@ -22,9 +22,7 @@ function TimelineItem({ item, index }: { item: CareerItem; index: number }) {
   const activeGlow =
     "drop-shadow(0 0 8px rgba(236,72,153,0.8)) drop-shadow(0 0 20px rgba(168,85,247,0.7))";
 
-  // ✅ Mobile: dot turun (mt-8)
-  // ✅ md+: dot mentok atas (mt-0) supaya start garis & dot sejajar
-  const dotOffset = "mt-8 md:mt-4";
+  const dotOffset = "mt-12 md:mt-4";
 
   return (
     <motion.div
@@ -39,9 +37,7 @@ function TimelineItem({ item, index }: { item: CareerItem; index: number }) {
           className={dotOffset}
           animate={{ scale: inView ? 1.15 : 1 }}
           transition={{ type: "spring", stiffness: 280, damping: 22 }}
-          style={{
-            filter: inView ? activeGlow : undefined,
-          }}
+          style={{ filter: inView ? activeGlow : undefined }}
         >
           <Image
             src={Dot}
@@ -55,8 +51,6 @@ function TimelineItem({ item, index }: { item: CareerItem; index: number }) {
         <CardHeader className="px-6 pt-7 pb-0">
           <CardTitle className="text-2xl font-semibold">{item.title}</CardTitle>
 
-          {/* ✅ Mobile: stack (kolom) */}
-          {/* ✅ md+: company & date bersebelahan */}
           <div className="mt-4 flex flex-col gap-3 text-lg md:flex-row md:items-center md:gap-10">
             <div className="flex items-center gap-3">
               <Image src={Company} alt="company icon" className="w-5 h-5" />
@@ -126,31 +120,30 @@ export default function Career() {
     "bg-gradient-to-b from-pink-500 via-purple-500 to-violet-500";
 
   return (
-    <main className="mt-30">
-      <div className="text-center">
-        <div className="text-4xl font-extrabold">Career Journey</div>
-        <h1 className="text-neutral-200 mt-6 leading-8 text-xl">
-          A visual timeline of key milestones and experiences from over the
-          years.
-        </h1>
-      </div>
+    <section className="mt-30 w-full">
+      <div className="w-full px-4 sm:px-6 md:px-20">
+        <div className="text-center">
+          <div className="text-4xl font-extrabold">Career Journey</div>
+          <h1 className="mt-6 text-xl leading-8 text-neutral-200">
+            A visual timeline of key milestones and experiences from over the
+            years.
+          </h1>
+        </div>
 
-      <div className="w-full mt-12">
-        <div className="relative">
-          {/* ✅ Vertical Line */}
-          {/* Mobile: mulai top-8 (ngikut dot yang mt-8) */}
-          {/* md+: mulai top-0 (ngikut dot yang md:mt-0) */}
-          <div
-            className={`absolute left-4.5 top-8 md:top-8 bottom-0 w-0.75 rounded-full ${lineGradient}`}
-          />
+        <div className="mt-12 w-full">
+          <div className="relative">
+            <div
+              className={`absolute left-4.5 top-8 md:top-8 bottom-0 w-0.75 rounded-full ${lineGradient}`}
+            />
 
-          <div className="space-y-6">
-            {items.map((item, idx) => (
-              <TimelineItem key={idx} item={item} index={idx} />
-            ))}
+            <div className="space-y-6">
+              {items.map((item, idx) => (
+                <TimelineItem key={idx} item={item} index={idx} />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

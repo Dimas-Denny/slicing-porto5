@@ -12,8 +12,8 @@ import Drop from "@/components/containers/drophere/Drop";
 
 export default function Home() {
   return (
-    <main className="px-6 py-4">
-      <div className="-mx-6 -mt-4">
+    <main className="py-4">
+      <div className="-mx-4 -mt-4">
         <Navbar />
       </div>
 
@@ -28,7 +28,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-black/80" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-6 pb-10 pt-6">
+        <div className="relative z-10 mx-auto max-w-6xl px-4 pb-10 pt-6">
           <Hero />
         </div>
       </section>

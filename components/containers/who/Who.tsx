@@ -1,7 +1,7 @@
 export default function Who() {
   return (
     <section id="about" className="mt-20">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 md:gap-20">
           {/* LEFT */}
           <h2 className="text-4xl md:text-5xl font-extrabold text-white">

@@ -14,6 +14,12 @@ type FormState = {
   message: string;
 };
 
+type ContactModalProps = {
+  open: boolean;
+  onClose: () => void;
+  onCloseAll?: () => void;
+};
+
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 }
@@ -24,27 +30,32 @@ function validateEmail(email: string) {
   return "";
 }
 
+const EMPTY_FORM: FormState = { name: "", email: "", message: "" };
+
 export default function ContactModal({
   open,
   onClose,
   onCloseAll,
-}: {
-  open: boolean;
-  onClose: () => void;
-  onCloseAll?: () => void;
-}) {
-  const [form, setForm] = React.useState<FormState>({
-    name: "",
-    email: "",
-    message: "",
-  });
-
+}: ContactModalProps) {
+  const [form, setForm] = React.useState<FormState>(EMPTY_FORM);
   const [errors, setErrors] = React.useState<{ email?: string }>({});
-
   const [statusOpen, setStatusOpen] = React.useState(false);
   const [statusType, setStatusType] = React.useState<"success" | "failed">(
     "success",
   );
+
+  const reset = React.useCallback(() => {
+    setForm(EMPTY_FORM);
+    setErrors({});
+    setStatusOpen(false);
+    setStatusType("success");
+  }, []);
+
+  //refresh
+  React.useEffect(() => {
+    if (!open) return;
+    reset();
+  }, [open, reset]);
 
   function onChange<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((p) => ({ ...p, [key]: value }));
@@ -61,15 +72,10 @@ export default function ContactModal({
     const emailMsg = validateEmail(form.email);
     setErrors((p) => ({ ...p, email: emailMsg || undefined }));
 
-    const isValid =
+    const ok =
       form.name.trim() !== "" && form.message.trim() !== "" && emailMsg === "";
 
-    if (isValid) {
-      setStatusType("success");
-    } else {
-      setStatusType("failed");
-    }
-
+    setStatusType(ok ? "success" : "failed");
     setStatusOpen(true);
   }
 
@@ -95,13 +101,14 @@ export default function ContactModal({
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-70 md:hidden"
+          className="fixed inset-0 z-70"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
           {/* backdrop */}
           <motion.button
+            type="button"
             aria-label="Close contact backdrop"
             className="absolute inset-0 bg-black/60 backdrop-blur-xs"
             initial={{ opacity: 0 }}
@@ -126,10 +133,11 @@ export default function ContactModal({
             )}
           >
             {/* close */}
-            <div className="flex items-start justify-between mb-4">
+            <div className="mb-4 flex items-start justify-between">
               <Image src={Logo} alt="Logo" className="h-10 w-10" />
 
               <button
+                type="button"
                 onClick={onClose}
                 className="rounded-full p-2 text-white/90 hover:bg-white/10 transition"
                 aria-label="Close contact modal"
@@ -137,6 +145,7 @@ export default function ContactModal({
                 <X size={18} />
               </button>
             </div>
+
             <MessageStatus
               open={statusOpen}
               type={statusType}
@@ -144,7 +153,6 @@ export default function ContactModal({
               onAction={() => {
                 if (statusType === "success") {
                   setStatusOpen(false);
-
                   onClose();
 
                   setTimeout(() => {
@@ -166,12 +174,14 @@ export default function ContactModal({
                   placeholder="Name"
                   onChange={(v) => onChange("name", v)}
                 />
+
                 <Field
                   value={form.email}
                   placeholder="Email"
                   onChange={(v) => onChange("email", v)}
                   error={errors.email}
                 />
+
                 <div className="rounded-2xl bg-black/55 px-4 py-3 ring-1 ring-white/10">
                   <textarea
                     value={form.message}

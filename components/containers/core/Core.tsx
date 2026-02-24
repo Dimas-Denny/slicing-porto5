@@ -2,7 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 type OrbitItem = {
   key: string;
@@ -34,13 +34,6 @@ function useMediaQuery(query: string) {
 export default function Core() {
   const isMdUp = useMediaQuery("(min-width: 768px)");
 
-  /**
-   * ✅ Yang berubah cuma ukuran:
-   * - CARD_W / CARD_H / ICON
-   * - RING_* dan CANVAS
-   *
-   * ✅ Display orbit, angles, duration, direction, RingDots angles/dotSize tetap sama.
-   */
   const sizes = useMemo(() => {
     if (isMdUp) {
       return {
@@ -53,28 +46,26 @@ export default function Core() {
         CANVAS: 520,
       };
     }
+
     return {
-      CARD_W: 96,
-      CARD_H: 48,
-      ICON: 34,
-      RING_INNER: 150,
-      RING_MID: 250,
-      RING_OUTER: 350,
-      CANVAS: 380,
+      CARD_W: 92,
+      CARD_H: 46,
+      ICON: 32,
+      RING_INNER: 140,
+      RING_MID: 220,
+      RING_OUTER: 310,
+      CANVAS: 320,
     };
   }, [isMdUp]);
 
   const { CARD_W, CARD_H, ICON, RING_INNER, RING_MID, RING_OUTER, CANVAS } =
     sizes;
 
-  // radius card (otomatis ikut besar sesuai ring & card height)
   const innerRadius = RING_INNER / 2 - CARD_H / 2;
   const midRadius = RING_MID / 2 - CARD_H / 2;
   const outerRadius = RING_OUTER / 2 - CARD_H / 2;
 
-  // ✅ Orbit items (TETAP sama: angle, duration, direction)
   const items: OrbitItem[] = [
-    // outer ring
     {
       key: "js",
       src: "/svg/js.svg",
@@ -94,7 +85,6 @@ export default function Core() {
       direction: -1,
     },
 
-    // mid ring
     {
       key: "html",
       src: "/svg/html.svg",
@@ -123,7 +113,6 @@ export default function Core() {
       direction: 1,
     },
 
-    // inner ring
     {
       key: "redux",
       src: "/svg/redux.svg",
@@ -145,8 +134,29 @@ export default function Core() {
   ];
 
   return (
-    <section id="skills" className="w-full py-12">
-      <div className="mx-auto w-full max-w-6xl px-4">
+    <section id="skills" className="relative w-full py-12 overflow-hidden">
+      <div className="pointer-events-none absolute -top-40 -left-40 md:-top-56 md:-left-56 z-0">
+        <Image
+          src="/png/ellipsecore.png"
+          alt=""
+          width={700}
+          height={700}
+          className="opacity-80 blur-xl scale-110"
+        />
+      </div>
+
+      <div className="pointer-events-none absolute -bottom-52 -right-52 md:-bottom-64 md:-right-64 z-0">
+        <Image
+          src="/png/ellipsecore.png"
+          alt=""
+          width={520}
+          height={520}
+          className="opacity-80 blur-xl scale-110"
+        />
+      </div>
+
+      {/* CONTENT */}
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-20">
         <div className="text-center">
           <h2 className="text-4xl font-extrabold tracking-tight text-white">
             My Core Skill
@@ -156,35 +166,24 @@ export default function Core() {
           </p>
         </div>
 
-        {/* layout md+ bersandingan (orbit kiri, bar kanan) */}
         <div className="mt-10 grid gap-10 md:grid-cols-[1.15fr_0.85fr] md:items-center">
-          {/* ORBIT (display & dots TETAP) */}
-          <div className="flex justify-center md:justify-start">
+          {/* ORBIT */}
+          <div className="w-full flex justify-center md:justify-start">
             <div
-              className="relative grid place-items-center"
+              className="relative grid place-items-center mx-auto md:mx-0"
               style={{ width: CANVAS, height: CANVAS }}
             >
-              {/* glow */}
               <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.22)_0%,transparent_62%)] blur-3xl opacity-55" />
 
               <Ring size={RING_OUTER} />
-              <RingDots
-                size={RING_OUTER}
-                dotSize={10}
-                angles={[58, 168, 214, 318]}
-              />
-
               <Ring size={RING_MID} />
-              <RingDots
-                size={RING_MID}
-                dotSize={9}
-                angles={[0, 90, 225, 270]}
-              />
-
               <Ring size={RING_INNER} />
-              <RingDots size={RING_INNER} dotSize={8} angles={[110, 250]} />
 
-              {/* orbit icons */}
+              {/*  DOTS (ellipse.svg) */}
+              <RingDots ringSize={RING_OUTER} dots={outerRingDots(isMdUp)} />
+              <RingDots ringSize={RING_MID} dots={midRingDots(isMdUp)} />
+              <RingDots ringSize={RING_INNER} dots={innerRingDots(isMdUp)} />
+
               {items.map((item) => (
                 <OrbitIcon
                   key={item.key}
@@ -197,9 +196,11 @@ export default function Core() {
             </div>
           </div>
 
-          {/* PROGRESS BAR */}
-          <div className="mx-auto w-full max-w-md text-left md:mx-0">
-            <SkillsBars skills={skills} />
+          {/* SKILLS */}
+          <div className="w-full flex justify-center md:justify-start">
+            <div className="w-full max-w-md mx-auto md:mx-0 text-left">
+              <SkillsBars skills={skills} />
+            </div>
           </div>
         </div>
       </div>
@@ -227,15 +228,13 @@ function OrbitIcon({
       animate={{ rotate: dir === 1 ? 360 : -360 }}
       transition={{ duration: item.duration, repeat: Infinity, ease: "linear" }}
     >
-      {/* arm */}
       <div
         style={{
           transform: `rotate(${item.angle}deg) translateX(${item.radius}px)`,
         }}
       >
-        {/* card tetap lurus */}
         <motion.div
-          className="flex items-center justify-center rounded-lg border border-fuchsia-400/45 bg-black/40 backdrop-blur shadow-[0_0_0_1px_rgba(236,72,153,0.10)]"
+          className="flex items-center justify-center rounded-lg border border-fuchsia-400/45 bg-black/40 backdrop-blur"
           style={{
             width: cardW,
             height: cardH,
@@ -272,48 +271,88 @@ function Ring({ size }: { size: number }) {
   );
 }
 
-function RingDots({
-  size,
-  angles,
-  dotSize = 10,
-  src = "/svg/ellipse.svg",
-  opacity = 0.9,
-}: {
+type RingDot = {
+  angle: number;
   size: number;
-  angles: number[];
-  dotSize?: number;
-  src?: string;
   opacity?: number;
-}) {
-  const r = size / 2;
+};
+
+function RingDots({ ringSize, dots }: { ringSize: number; dots: RingDot[] }) {
+  const r = ringSize / 2;
+  const cx = r;
+  const cy = r;
 
   return (
     <div
-      className="pointer-events-none absolute left-1/2 top-1/2 z-10"
-      style={{ width: size, height: size, transform: "translate(-50%, -50%)" }}
-      aria-hidden="true"
+      className="pointer-events-none absolute left-1/2 top-1/2"
+      style={{
+        width: ringSize,
+        height: ringSize,
+        transform: "translate(-50%, -50%)",
+        zIndex: 50, // naik paling atas biar gak ketiban
+      }}
     >
-      {angles.map((a, idx) => (
-        <div
-          key={`${size}-${a}-${idx}`}
-          className="absolute left-1/2 top-1/2"
-          style={{
-            transform: `translate(-50%, -50%) rotate(${a}deg) translateX(${r}px)`,
-          }}
-        >
-          <Image
-            src={src}
-            alt=""
-            width={dotSize}
-            height={dotSize}
-            draggable={false}
-            className="drop-shadow-[0_0_10px_rgba(236,72,153,0.35)]"
-            style={{ opacity }}
-          />
-        </div>
-      ))}
+      {dots.map((d, idx) => {
+        const rad = (d.angle * Math.PI) / 180;
+        const x = cx + Math.cos(rad) * r;
+        const y = cy + Math.sin(rad) * r;
+
+        return (
+          <div
+            key={`${ringSize}-${idx}`}
+            className="absolute"
+            style={{
+              left: x,
+              top: y,
+              transform: "translate(-50%, -50%)",
+              opacity: d.opacity ?? 1,
+            }}
+          >
+            <Image
+              src="/svg/ellipse.svg"
+              alt=""
+              width={d.size + 2}
+              height={d.size + 2}
+              draggable={false}
+              className="
+    brightness-0
+    invert
+    opacity-30
+    drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]
+  "
+            />
+          </div>
+        );
+      })}
     </div>
   );
+}
+
+function outerRingDots(isMdUp: boolean): RingDot[] {
+  const s = isMdUp ? 10 : 8;
+  return [
+    { angle: 28, size: s, opacity: 0.9 },
+    { angle: 102, size: s, opacity: 0.75 },
+    { angle: 196, size: s + 2, opacity: 0.9 },
+    { angle: 312, size: s, opacity: 0.75 },
+  ];
+}
+
+function midRingDots(isMdUp: boolean): RingDot[] {
+  const s = isMdUp ? 9 : 7;
+  return [
+    { angle: 14, size: s, opacity: 0.85 },
+    { angle: 142, size: s + 1, opacity: 0.8 },
+    { angle: 248, size: s, opacity: 0.7 },
+  ];
+}
+
+function innerRingDots(isMdUp: boolean): RingDot[] {
+  const s = isMdUp ? 8 : 6;
+  return [
+    { angle: 70, size: s, opacity: 0.8 },
+    { angle: 210, size: s + 1, opacity: 0.9 },
+  ];
 }
 
 function SkillsBars({ skills }: { skills: Skill[] }) {

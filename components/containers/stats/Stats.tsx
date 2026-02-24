@@ -9,30 +9,30 @@ export default function Stats() {
   const gradient = "bg-gradient-to-r from-pink-500 to-purple-500";
 
   return (
-    <div className="bg-black flex items-center justify-center p-4 mt-12">
+    <div className="bg-black flex items-center justify-center px-4 py-8 mt-12">
       <div className="w-full max-w-6xl">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-0 place-items-center">
+        <div className="grid grid-cols-2 gap-5 sm:gap-8 md:grid-cols-4 md:gap-0 place-items-center">
           {items.map((item, i) => (
             <div
               key={i}
               className={`
-              w-44 h-44 rounded-full
-              ${item.outline ? `p-0.5 ${gradient}` : gradient}
-              flex items-center justify-center
-            `}
+                w-37 h-37  md:w-68 md:h-68 rounded-full
+                ${item.outline ? `p-0.5 ${gradient}` : gradient}
+                flex items-center justify-center
+              `}
             >
               <div
                 className={`
-                w-full h-full rounded-full
-                flex flex-col items-center justify-center
-                text-white text-center
-                ${item.outline ? "bg-black" : ""}
-              `}
+                  w-full h-full rounded-full
+                  flex flex-col items-center justify-center
+                  text-white text-center
+                  ${item.outline ? "bg-black" : ""}
+                `}
               >
-                <div className="text-4xl md:text-5xl font-bold leading-none">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-bold leading-none">
                   {item.value}
                 </div>
-                <div className="mt-3 text-sm md:text-base opacity-90">
+                <div className="mt-2 sm:mt-3 text-xs sm:text-sm md:text-base opacity-90">
                   {item.label}
                 </div>
               </div>
