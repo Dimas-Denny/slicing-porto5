@@ -145,16 +145,6 @@ export default function Core() {
         />
       </div>
 
-      <div className="pointer-events-none absolute -bottom-52 -right-52 md:-bottom-64 md:-right-64 z-0">
-        <Image
-          src="/png/ellipsecore.png"
-          alt=""
-          width={520}
-          height={520}
-          className="opacity-80 blur-xl scale-110"
-        />
-      </div>
-
       {/* CONTENT */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 md:px-20">
         <div className="text-center">
@@ -289,7 +279,7 @@ function RingDots({ ringSize, dots }: { ringSize: number; dots: RingDot[] }) {
         width: ringSize,
         height: ringSize,
         transform: "translate(-50%, -50%)",
-        zIndex: 50, // naik paling atas biar gak ketiban
+        zIndex: 50,
       }}
     >
       {dots.map((d, idx) => {
