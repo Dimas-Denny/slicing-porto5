@@ -4,9 +4,9 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Company from "@/public/svg/company.svg";
-import DateIcon from "@/public/svg/date.svg";
-import Dot from "@/public/svg/dot.svg";
+import Company from "@/assets/svg/company.svg";
+import DateIcon from "@/assets/svg/date.svg";
+import Dot from "@/assets/svg/dot.svg";
 
 type CareerItem = {
   title: string;

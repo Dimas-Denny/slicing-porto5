@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import avatarplay from "@/public/png/avatarplay.png";
-import cornerFront from "@/public/svg/2.svg";
-import cornerEnd from "@/public/svg/1.svg";
-import EllipseBig from "@/public/svg/ellipsebig.svg";
+import avatarplay from "@/assets/png/avatarplay.png";
+import cornerFront from "@/assets/svg/2.svg";
+import cornerEnd from "@/assets/svg/1.svg";
+import EllipseBig from "@/assets/svg/ellipsebig.svg";
 
 export default function Hero() {
   return (

@@ -6,8 +6,8 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 
-import Logo from "@/public/png/logo.png";
-import Mailbox from "@/public/svg/mailbox.svg";
+import Logo from "@/assets/png/logo.png";
+import Mailbox from "@/assets/svg/mailbox.svg";
 import { Button } from "@/components/ui/button";
 
 type MobileMenuProps = {

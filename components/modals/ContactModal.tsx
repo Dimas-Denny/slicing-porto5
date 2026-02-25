@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import Logo from "@/public/png/logo.png";
+import Logo from "@/assets/png/logo.png";
 import MessageStatus from "@/components/feedback/MessageStatus";
 
 type FormState = {

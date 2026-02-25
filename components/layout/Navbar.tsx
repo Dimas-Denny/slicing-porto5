@@ -3,9 +3,9 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/png/logo.png";
-import Mailbox from "@/public/svg/mailbox.svg";
-import Hamburger from "@/public/svg/hamburger.svg";
+import Logo from "@/assets/png/logo.png";
+import Mailbox from "@/assets/svg/mailbox.svg";
+import Hamburger from "@/assets/svg/hamburger.svg";
 import { Button } from "@/components/ui/button";
 import MobileMenu from "@/components/layout/MobileMenu";
 import ContactModal from "@/components/modals/ContactModal";
