@@ -3,21 +3,17 @@
 import React from "react";
 import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
-
-// ✅ Import semua image project
 import project1 from "@/assets/png/project1.png";
 import project2 from "@/assets/png/project2.png";
 import project3 from "@/assets/png/project3.png";
 import project4 from "@/assets/png/project4.png";
 import project5 from "@/assets/png/project5.png";
 import project6 from "@/assets/png/project6.png";
-
-// ✅ Import arrow
 import arrowIcon from "@/assets/svg/arrow.svg";
 
 type Project = {
   id: string;
-  image: StaticImageData; // ✅ changed
+  image: StaticImageData;
   title: string;
   desc: string;
   chips: string[];
@@ -106,7 +102,7 @@ function ProjectCard({ p }: { p: Project }) {
       <div className="p-4">
         <div className="relative overflow-hidden rounded-2xl bg-black/30">
           <Image
-            src={p.image} // ✅ changed
+            src={p.image}
             alt={p.title}
             className="h-auto w-full object-cover"
             priority={false}
@@ -137,7 +133,7 @@ function ProjectCard({ p }: { p: Project }) {
             </span>
 
             <Image
-              src={arrowIcon} // ✅ changed
+              src={arrowIcon}
               alt="Visit"
               width={24}
               height={24}

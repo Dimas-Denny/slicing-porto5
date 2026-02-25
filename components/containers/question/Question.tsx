@@ -4,8 +4,6 @@ import React, { useId, useMemo, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-// ✅ assets imports
 import upIcon from "@/assets/svg/up.svg";
 import downIcon from "@/assets/svg/down.svg";
 
@@ -37,7 +35,7 @@ const FAQS: FaqItem[] = [
 function Chevron({ open }: { open: boolean }) {
   return (
     <Image
-      src={open ? upIcon : downIcon} // ✅ changed
+      src={open ? upIcon : downIcon}
       alt={open ? "Collapse" : "Expand"}
       width={18}
       height={18}

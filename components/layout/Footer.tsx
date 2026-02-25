@@ -1,8 +1,6 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-
-// ✅ import assets
 import logo from "@/assets/png/logo.png";
 import dribbleIcon from "@/assets/svg/dribble.svg";
 import igIcon from "@/assets/svg/ig.svg";
@@ -16,7 +14,7 @@ export default function Footer() {
           {/* LEFT */}
           <div className="flex items-center gap-4">
             <Image
-              src={logo} // ✅ changed
+              src={logo}
               alt="Logo"
               width={32}
               height={32}
@@ -37,13 +35,7 @@ export default function Footer() {
   );
 }
 
-function SocialIcon({
-  src,
-  alt,
-}: {
-  src: StaticImageData; // ✅ changed
-  alt: string;
-}) {
+function SocialIcon({ src, alt }: { src: StaticImageData; alt: string }) {
   return (
     <a
       href="#"

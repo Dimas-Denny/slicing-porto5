@@ -21,7 +21,7 @@ Designed with a strong focus on animation, reusable components, and clean UI arc
 • Animation: Framer Motion
 • Icons: Lucide React
 • Deployment: Vercel
-
+git
 ⸻
 
 ✨ Features

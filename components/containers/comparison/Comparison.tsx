@@ -2,8 +2,6 @@
 
 import React from "react";
 import Image from "next/image";
-
-// ✅ assets imports
 import checkIcon from "@/assets/svg/check.svg";
 import noIcon from "@/assets/svg/no.svg";
 

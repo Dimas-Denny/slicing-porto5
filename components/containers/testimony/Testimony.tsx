@@ -2,16 +2,12 @@
 
 import React, { useMemo } from "react";
 import Image, { type StaticImageData } from "next/image";
-
-// ✅ assets imports (avatars)
 import avatar1 from "@/assets/png/avatar1.png";
 import avatar2 from "@/assets/png/avatar2.png";
 import avatar3 from "@/assets/png/avatar3.png";
 import avatar4 from "@/assets/png/avatar4.png";
 import avatar5 from "@/assets/png/avatar5.png";
 import avatar6 from "@/assets/png/avatar6.png";
-
-// ✅ assets imports (arrows)
 import leftIcon from "@/assets/svg/left.svg";
 import rightIcon from "@/assets/svg/right.svg";
 
@@ -20,7 +16,7 @@ type Testi = {
   name: string;
   role: string;
   quote: string;
-  avatar: StaticImageData; // ✅ changed
+  avatar: StaticImageData;
 };
 
 const QUOTE =

@@ -3,11 +3,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { motion } from "motion/react";
-
-// ✅ assets imports
 import ellipseCore from "@/assets/png/ellipsecore.png";
 import ellipseDot from "@/assets/svg/ellipse.svg";
-
 import jsIcon from "@/assets/svg/js.svg";
 import tsIcon from "@/assets/svg/ts.svg";
 import htmlIcon from "@/assets/svg/html.svg";
