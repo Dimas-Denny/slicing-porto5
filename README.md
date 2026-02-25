@@ -8,7 +8,7 @@ Designed with a strong focus on animation, reusable components, and clean UI arc
 
 🌐 Live Demo
 
-🔗 Live Website: (Add your Vercel link here)
+🔗 Live Website: https://slicing-porto5.vercel.app
 📂 Repository: https://github.com/Dimas-Denny/slicing-porto5
 
 ⸻
