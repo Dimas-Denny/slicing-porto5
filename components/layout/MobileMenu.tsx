@@ -1,15 +1,19 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
 
-type Props = {
+import Logo from "@/public/png/logo.png";
+import Mailbox from "@/public/svg/mailbox.svg";
+import { Button } from "@/components/ui/button";
+
+type MobileMenuProps = {
   open: boolean;
   onClose: () => void;
-  onContact: () => void; // ✅ baru
+  onContact: () => void; // klik Hire Me
 };
 
 const NAV_ITEMS = [
@@ -21,88 +25,81 @@ const NAV_ITEMS = [
   { label: "Contact", href: "#contact" },
 ];
 
-export default function MobileMenu({ open, onClose, onContact }: Props) {
+export default function MobileMenu({
+  open,
+  onClose,
+  onContact,
+}: MobileMenuProps) {
+  // lock scroll ketika menu kebuka
   useEffect(() => {
     if (!open) return;
-
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-    window.addEventListener("keydown", onKeyDown);
-
     return () => {
       document.body.style.overflow = prev;
-      window.removeEventListener("keydown", onKeyDown);
     };
-  }, [open, onClose]);
+  }, [open]);
 
   return (
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-60 md:hidden"
+          className="fixed inset-0 z-[999] bg-black"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
         >
-          {/* overlay */}
-          <button
-            type="button"
-            aria-label="Close menu overlay"
-            onClick={onClose}
-            className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"
-          />
+          <div className="flex flex-col min-h-screen px-8 py-10">
+            {/* Header */}
+            <div className="flex items-start justify-between">
+              <Image
+                src={Logo}
+                alt="Logo"
+                className="h-10 w-10 object-contain"
+                priority
+              />
 
-          {/* panel */}
-          <motion.aside
-            className={cn(
-              "absolute right-0 top-0 h-full w-[86%] max-w-90",
-              "bg-neutral-600/95 ring-1 ring-white/10",
-              "p-6",
-            )}
-            initial={{ x: 60, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 60, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 260, damping: 26 }}
-          >
-            <div className="flex items-center justify-between">
-              <p className="text-white text-lg font-bold">Menu</p>
               <button
                 type="button"
                 onClick={onClose}
-                className="rounded-full px-3 py-2 text-white/80 hover:bg-white/10"
+                aria-label="Close menu"
+                className="p-2"
               >
-                Close
+                <X className="h-5 w-5 text-white" />
               </button>
             </div>
 
-            <div className="mt-6 space-y-3">
+            {/* Nav Items */}
+            <nav className="mt-14 flex flex-col gap-10">
               {NAV_ITEMS.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={onClose}
-                  className="block rounded-2xl bg-black/30 px-4 py-3 text-white/90 hover:bg-black/40 transition"
+                  className="text-white text-lg font-medium"
                 >
                   {item.label}
                 </Link>
               ))}
-            </div>
+            </nav>
 
-            {/* ✅ Contact Me -> buka ContactModal */}
-            <div className="mt-6">
-              <Button
-                variant="gradient"
-                className="w-full h-12 rounded-full"
-                onClick={onContact}
-              >
-                Contact Me
-              </Button>
-            </div>
-          </motion.aside>
+            {/* Spacer */}
+            <div className="flex-1" />
+
+            {/* Hire Me */}
+            <Button
+              variant="gradient"
+              className="w-full h-14 rounded-full text-base font-semibold"
+              onClick={() => {
+                onClose();
+                onContact();
+              }}
+            >
+              <Image alt="Mailbox" src={Mailbox} className="h-5 w-5" />
+              Hire Me
+            </Button>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
