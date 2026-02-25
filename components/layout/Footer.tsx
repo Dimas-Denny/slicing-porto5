@@ -1,6 +1,12 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+
+// ✅ import assets
+import logo from "@/assets/png/logo.png";
+import dribbleIcon from "@/assets/svg/dribble.svg";
+import igIcon from "@/assets/svg/ig.svg";
+import linkedinIcon from "@/assets/svg/linkedin.svg";
 
 export default function Footer() {
   return (
@@ -10,7 +16,7 @@ export default function Footer() {
           {/* LEFT */}
           <div className="flex items-center gap-4">
             <Image
-              src="/png/logo.png"
+              src={logo} // ✅ changed
               alt="Logo"
               width={32}
               height={32}
@@ -21,9 +27,9 @@ export default function Footer() {
 
           {/* RIGHT */}
           <div className="flex items-center gap-4">
-            <SocialIcon src="/svg/dribble.svg" alt="Dribble" />
-            <SocialIcon src="/svg/ig.svg" alt="Instagram" />
-            <SocialIcon src="/svg/linkedin.svg" alt="LinkedIn" />
+            <SocialIcon src={dribbleIcon} alt="Dribble" />
+            <SocialIcon src={igIcon} alt="Instagram" />
+            <SocialIcon src={linkedinIcon} alt="LinkedIn" />
           </div>
         </div>
       </div>
@@ -31,7 +37,13 @@ export default function Footer() {
   );
 }
 
-function SocialIcon({ src, alt }: { src: string; alt: string }) {
+function SocialIcon({
+  src,
+  alt,
+}: {
+  src: StaticImageData; // ✅ changed
+  alt: string;
+}) {
   return (
     <a
       href="#"
@@ -49,6 +61,7 @@ function SocialIcon({ src, alt }: { src: string; alt: string }) {
         alt={alt}
         width={alt === "Dribble" ? 34 : 20}
         height={alt === "Dribble" ? 34 : 20}
+        draggable={false}
       />
     </a>
   );

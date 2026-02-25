@@ -1,12 +1,23 @@
 "use client";
 
 import React, { useEffect, useMemo, useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion } from "motion/react";
+
+// ✅ assets imports
+import ellipseCore from "@/assets/png/ellipsecore.png";
+import ellipseDot from "@/assets/svg/ellipse.svg";
+
+import jsIcon from "@/assets/svg/js.svg";
+import tsIcon from "@/assets/svg/ts.svg";
+import htmlIcon from "@/assets/svg/html.svg";
+import cssIcon from "@/assets/svg/css3.svg";
+import reactIcon from "@/assets/svg/react.svg";
+import reduxIcon from "@/assets/svg/redux.svg";
 
 type OrbitItem = {
   key: string;
-  src: string;
+  src: StaticImageData;
   alt: string;
   angle: number;
   radius: number;
@@ -68,7 +79,7 @@ export default function Core() {
   const items: OrbitItem[] = [
     {
       key: "js",
-      src: "/svg/js.svg",
+      src: jsIcon,
       alt: "JavaScript",
       angle: 240,
       radius: outerRadius,
@@ -77,7 +88,7 @@ export default function Core() {
     },
     {
       key: "ts",
-      src: "/svg/ts.svg",
+      src: tsIcon,
       alt: "TypeScript",
       angle: 60,
       radius: outerRadius,
@@ -87,7 +98,7 @@ export default function Core() {
 
     {
       key: "html",
-      src: "/svg/html.svg",
+      src: htmlIcon,
       alt: "HTML",
       angle: 0,
       radius: midRadius,
@@ -96,7 +107,7 @@ export default function Core() {
     },
     {
       key: "css",
-      src: "/svg/css3.svg",
+      src: cssIcon,
       alt: "CSS",
       angle: 120,
       radius: midRadius,
@@ -105,7 +116,7 @@ export default function Core() {
     },
     {
       key: "react",
-      src: "/svg/react.svg",
+      src: reactIcon,
       alt: "React",
       angle: 240,
       radius: midRadius,
@@ -115,7 +126,7 @@ export default function Core() {
 
     {
       key: "redux",
-      src: "/svg/redux.svg",
+      src: reduxIcon,
       alt: "Redux",
       angle: 0,
       radius: innerRadius,
@@ -140,7 +151,7 @@ export default function Core() {
     >
       <div className="pointer-events-none absolute -top-40 -left-40 md:-top-56 md:-left-56 z-0">
         <Image
-          src="/png/ellipsecore.png"
+          src={ellipseCore}
           alt=""
           width={700}
           height={700}
@@ -172,7 +183,7 @@ export default function Core() {
               <Ring size={RING_MID} />
               <Ring size={RING_INNER} />
 
-              {/*  DOTS (ellipse.svg) */}
+              {/* DOTS */}
               <RingDots ringSize={RING_OUTER} dots={outerRingDots(isMdUp)} />
               <RingDots ringSize={RING_MID} dots={midRingDots(isMdUp)} />
               <RingDots ringSize={RING_INNER} dots={innerRingDots(isMdUp)} />
@@ -302,17 +313,17 @@ function RingDots({ ringSize, dots }: { ringSize: number; dots: RingDot[] }) {
             }}
           >
             <Image
-              src="/svg/ellipse.svg"
+              src={ellipseDot}
               alt=""
               width={d.size + 2}
               height={d.size + 2}
               draggable={false}
               className="
-    brightness-0
-    invert
-    opacity-30
-    drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]
-  "
+                brightness-0
+                invert
+                opacity-30
+                drop-shadow-[0_0_6px_rgba(255,255,255,0.4)]
+              "
             />
           </div>
         );

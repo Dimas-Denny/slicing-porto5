@@ -5,6 +5,10 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+// ✅ assets imports
+import upIcon from "@/assets/svg/up.svg";
+import downIcon from "@/assets/svg/down.svg";
+
 type FaqItem = { q: string; a: string };
 
 const FAQS: FaqItem[] = [
@@ -33,11 +37,12 @@ const FAQS: FaqItem[] = [
 function Chevron({ open }: { open: boolean }) {
   return (
     <Image
-      src={open ? "/svg/up.svg" : "/svg/down.svg"}
+      src={open ? upIcon : downIcon} // ✅ changed
       alt={open ? "Collapse" : "Expand"}
       width={18}
       height={18}
       className="shrink-0 select-none opacity-90"
+      draggable={false}
     />
   );
 }
@@ -56,7 +61,6 @@ function FaqCard({
   panelId: string;
 }) {
   return (
-    // Wrapper border
     <div
       className={cn(
         "rounded-2xl",
@@ -124,7 +128,7 @@ export default function FAQPage() {
     <main className="bg-black px-4 py-10 md:py-16">
       <section
         id="faq"
-        className="scroll-mt-24 md:scroll-md-28 mx-auto w-full max-w-md md:max-w-4xl"
+        className="scroll-mt-24 md:scroll-mt-28 mx-auto w-full max-w-md md:max-w-4xl"
       >
         <header className="text-center">
           <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-5xl">

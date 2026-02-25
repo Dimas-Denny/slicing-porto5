@@ -3,6 +3,10 @@
 import React from "react";
 import Image from "next/image";
 
+// ✅ assets imports
+import checkIcon from "@/assets/svg/check.svg";
+import noIcon from "@/assets/svg/no.svg";
+
 type Row = {
   skill: string;
   me: boolean;
@@ -80,7 +84,7 @@ function Mark({ ok }: { ok: boolean }) {
   return (
     <span className="grid h-9 w-9 place-items-center rounded-full bg-white/0">
       <Image
-        src={ok ? "/svg/check.svg" : "/svg/no.svg"}
+        src={ok ? checkIcon : noIcon}
         alt={ok ? "Yes" : "No"}
         width={22}
         height={22}

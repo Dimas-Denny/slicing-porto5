@@ -1,14 +1,26 @@
 "use client";
 
 import React, { useMemo } from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+
+// ✅ assets imports (avatars)
+import avatar1 from "@/assets/png/avatar1.png";
+import avatar2 from "@/assets/png/avatar2.png";
+import avatar3 from "@/assets/png/avatar3.png";
+import avatar4 from "@/assets/png/avatar4.png";
+import avatar5 from "@/assets/png/avatar5.png";
+import avatar6 from "@/assets/png/avatar6.png";
+
+// ✅ assets imports (arrows)
+import leftIcon from "@/assets/svg/left.svg";
+import rightIcon from "@/assets/svg/right.svg";
 
 type Testi = {
   id: string;
   name: string;
   role: string;
   quote: string;
-  avatar: string;
+  avatar: StaticImageData; // ✅ changed
 };
 
 const QUOTE =
@@ -22,42 +34,42 @@ export default function Testimony() {
         name: "Rafel Struick",
         role: "CEO",
         quote: QUOTE,
-        avatar: "/png/avatar1.png",
+        avatar: avatar1,
       },
       {
         id: "t2",
         name: "Rafel Struick",
         role: "CEO",
         quote: QUOTE,
-        avatar: "/png/avatar2.png",
+        avatar: avatar2,
       },
       {
         id: "t3",
         name: "Rafel Struick",
         role: "CEO",
         quote: QUOTE,
-        avatar: "/png/avatar3.png",
+        avatar: avatar3,
       },
       {
         id: "t4",
         name: "Rafel Struick",
         role: "CEO",
         quote: QUOTE,
-        avatar: "/png/avatar4.png",
+        avatar: avatar4,
       },
       {
         id: "t5",
         name: "Rafel Struick",
         role: "CEO",
         quote: QUOTE,
-        avatar: "/png/avatar5.png",
+        avatar: avatar5,
       },
       {
         id: "t6",
         name: "Rafel Struick",
         role: "CEO",
         quote: QUOTE,
-        avatar: "/png/avatar6.png",
+        avatar: avatar6,
       },
     ],
     [],
@@ -82,7 +94,6 @@ export default function Testimony() {
 
         <div className="mt-10 space-y-8">
           <TestimonyRow items={row1} initialOffset={60} />
-
           <TestimonyRow items={row2} initialOffset={60 + 2 * 320} />
         </div>
       </div>
@@ -159,7 +170,7 @@ function TestimonyRow({
         onClick={() => scrollByAmount(-320)}
         className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/15 bg-black/40 p-3 backdrop-blur"
       >
-        <Image src="/svg/left.svg" alt="Left" width={18} height={18} />
+        <Image src={leftIcon} alt="Left" width={18} height={18} />
       </button>
 
       {/* Right */}
@@ -167,7 +178,7 @@ function TestimonyRow({
         onClick={() => scrollByAmount(320)}
         className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/15 bg-black/40 p-3 backdrop-blur"
       >
-        <Image src="/svg/right.svg" alt="Right" width={18} height={18} />
+        <Image src={rightIcon} alt="Right" width={18} height={18} />
       </button>
 
       <div

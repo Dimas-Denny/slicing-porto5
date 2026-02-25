@@ -1,12 +1,23 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 import Link from "next/link";
+
+// ✅ Import semua image project
+import project1 from "@/assets/png/project1.png";
+import project2 from "@/assets/png/project2.png";
+import project3 from "@/assets/png/project3.png";
+import project4 from "@/assets/png/project4.png";
+import project5 from "@/assets/png/project5.png";
+import project6 from "@/assets/png/project6.png";
+
+// ✅ Import arrow
+import arrowIcon from "@/assets/svg/arrow.svg";
 
 type Project = {
   id: string;
-  image: string;
+  image: StaticImageData; // ✅ changed
   title: string;
   desc: string;
   chips: string[];
@@ -15,42 +26,42 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     id: "p1",
-    image: "/png/project1.png",
+    image: project1,
     title: "Landing Page",
     desc: 'THE BIGGEST community event in Indonesia, which will run for 30 full days with the theme "Unity in Creativity"',
     chips: ["React", "HTML", "CSS"],
   },
   {
     id: "p2",
-    image: "/png/project2.png",
+    image: project2,
     title: "Landing Page",
     desc: "Private hospital in the city of Padang that provides special surgical services.",
     chips: ["React", "HTML", "CSS"],
   },
   {
     id: "p3",
-    image: "/png/project3.png",
+    image: project3,
     title: "Landing Page",
     desc: "Product engaged in WhatsApp API services and other information technology services.",
     chips: ["React", "HTML", "CSS"],
   },
   {
     id: "p4",
-    image: "/png/project4.png",
+    image: project4,
     title: "Landing Page",
     desc: "nusa.id cloud is part of the Nusanet Group (PT. Media Antar Nusa) of experience as an internet solution provider company",
     chips: ["React", "HTML", "CSS"],
   },
   {
     id: "p5",
-    image: "/png/project5.png",
+    image: project5,
     title: "Landing Page",
     desc: "UKUR is a constructor and interior marketplace in Indonesia.",
     chips: ["React", "HTML", "CSS"],
   },
   {
     id: "p6",
-    image: "/png/project6.png",
+    image: project6,
     title: "Landing Page",
     desc: "Product engaged in WhatsApp API services and other information technology services.",
     chips: ["React", "HTML", "CSS"],
@@ -95,10 +106,8 @@ function ProjectCard({ p }: { p: Project }) {
       <div className="p-4">
         <div className="relative overflow-hidden rounded-2xl bg-black/30">
           <Image
-            src={p.image}
+            src={p.image} // ✅ changed
             alt={p.title}
-            width={640}
-            height={640}
             className="h-auto w-full object-cover"
             priority={false}
           />
@@ -126,8 +135,9 @@ function ProjectCard({ p }: { p: Project }) {
             <span className="bg-linear-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
               Visit
             </span>
+
             <Image
-              src="/svg/arrow.svg"
+              src={arrowIcon} // ✅ changed
               alt="Visit"
               width={24}
               height={24}
