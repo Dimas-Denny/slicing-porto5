@@ -5,6 +5,10 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import MessageStatus from "@/components/feedback/MessageStatus";
 
+// ✅ assets imports
+import backgroundDrop from "@/assets/png/backgrounddrop.png";
+import ellipseDrop from "@/assets/png/ellipsedrop.png";
+
 type FormState = {
   name: string;
   email: string;
@@ -62,7 +66,7 @@ export default function ContactPage() {
     >
       <div className="pointer-events-none absolute inset-0 z-0">
         <Image
-          src="/png/backgrounddrop.png"
+          src={backgroundDrop} // ✅ changed
           alt=""
           fill
           priority={false}
@@ -71,7 +75,7 @@ export default function ContactPage() {
 
         <div className="absolute bottom-0 right-0 h-130 w-130 md:h-190 md:w-190">
           <Image
-            src="/png/ellipsedrop.png"
+            src={ellipseDrop} // ✅ changed
             alt=""
             fill
             priority={false}
