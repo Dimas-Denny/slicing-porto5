@@ -169,6 +169,23 @@ Why ShadCN?
 
 ⸻
 
+## 🛠 Tech Stack
+
+- **Next.js 16**
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS**
+- **ShadCN UI**
+- **Radix UI**
+- **Framer Motion**
+- **Lucide React**
+- **class-variance-authority**
+- **clsx**
+- **tailwind-merge**
+- **Vercel (Deployment)**
+
+⸻
+
 👨‍💻 Author
 
 Dimas Denny
