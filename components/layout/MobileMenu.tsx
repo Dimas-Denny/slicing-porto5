@@ -44,7 +44,7 @@ export default function MobileMenu({
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[999] bg-black"
+          className="fixed inset-0 z-999 bg-black"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
