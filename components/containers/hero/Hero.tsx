@@ -4,6 +4,8 @@ import avatarplay from "@/assets/png/avatarplay.png";
 import cornerFront from "@/assets/svg/2.svg";
 import cornerEnd from "@/assets/svg/1.svg";
 import EllipseBig from "@/assets/svg/ellipsebig.svg";
+import waves from "@/assets/png/waves.png";
+import waves2 from "@/assets/png/waves2.png";
 
 export default function Hero() {
   return (
@@ -176,7 +178,7 @@ export default function Hero() {
         {/* ================= MOBILE WAVES ================= */}
         <div className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-24 h-36 w-screen md:hidden">
           <Image
-            src="/png/waves.png"
+            src={waves}
             alt="waves"
             fill
             className="object-cover object-top opacity-95 brightness-100 contrast-110 scale-[1.15]"
@@ -190,7 +192,7 @@ export default function Hero() {
         <div className="pointer-events-none hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-screen">
           <div className="relative h-40 lg:h-100 lg:mb-100 w-screen overflow-hidden">
             <Image
-              src="/png/waves2.png"
+              src={waves2}
               alt="waves"
               fill
               className="object-cover object-top opacity-95 brightness-70 contrast-110"
