@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 type MobileMenuProps = {
   open: boolean;
   onClose: () => void;
-  onContact: () => void; // klik Hire Me
+  onContact: () => void;
 };
 
 const NAV_ITEMS = [
@@ -30,7 +30,7 @@ export default function MobileMenu({
   onClose,
   onContact,
 }: MobileMenuProps) {
-  // lock scroll ketika menu kebuka
+  // lock scroll when menu is opened
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;

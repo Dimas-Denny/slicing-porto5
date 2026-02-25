@@ -106,7 +106,6 @@ export default function Navbar() {
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
         onContact={() => {
-          // ✅ ini yang sebelumnya "Function not implemented"
           setMenuOpen(false);
           setContactOpen(true);
         }}
