@@ -1,48 +1,185 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Slicing Portfolio 5
 
-🎨 Design Reference
+A modern, responsive personal portfolio built with Next.js, Tailwind CSS, and Framer Motion.
 
-FIGMA design : figma.com/design/p52eJQX06YEzLIHaljatDs/Portfolio-5---REP?node-id=2210-441096&p=f
+Designed with a strong focus on animation, reusable components, and clean UI architecture.
 
-Hal yang diperhatikan saat slicing:
+⸻
 
-Layout consistency (grid & spacing)
-Typography scale
-Color system
-Responsive behavior
-Component reusability
+🌐 Live Demo
 
-## Getting Started
+🔗 Live Website: (Add your Vercel link here)
+📂 Repository: https://github.com/Dimas-Denny/slicing-porto5
 
-First, run the development server:
+⸻
+
+🛠 Tech Stack
+• Framework: Next.js 16 (App Router)
+• Language: TypeScript
+• Styling: Tailwind CSS
+• UI Components: ShadCN (Radix UI based)
+• Animation: Framer Motion
+• Icons: Lucide React
+• Deployment: Vercel
+
+⸻
+
+✨ Features
+• Fixed blurred navbar
+• Full-screen animated mobile menu
+• Gradient CTA buttons
+• Animated orbit skills section
+• Timeline animation with reveal effects
+• Contact modal with validation
+• Mobile-first responsive layout
+• Clean reusable component system
+
+⸻
+
+📦 Installation
+
+1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/Dimas-Denny/slicing-porto5.git
+cd slicing-porto5`
+```
+
+2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+3️⃣ Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```plaintext
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+⸻
 
-## Learn More
+📂 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```plaintext
+src/
+ ├── app/
+ ├── components/
+ │    ├── layout/
+ │    ├── modals/
+ │    └── ui/
+ ├── lib/
+ └── public/
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Structure Overview
+• layout/ → Navbar, Footer, MobileMenu
+• modals/ → ContactModal
+• ui/ → Reusable UI components (Button, Card, etc.)
+• lib/ → Utility helpers (cn function)
+• public/ → Images, SVGs, static assets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+⸻
 
-## Deploy on Vercel
+🎨 UI System
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project uses a reusable button system built with class-variance-authority.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Example:
+
+```tsx
+<Button variant="gradient">Hire Me</Button>
+```
+
+The gradient variant is used for primary call-to-action buttons.
+
+⸻
+
+🎬 Animations
+
+Animations are implemented using Framer Motion.
+
+Used for:
+• Mobile menu transitions
+• Section reveal animations
+• Orbit motion in Skills section
+• Modal open/close effects
+
+Example:
+
+```tsx
+<motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+/>
+```
+
+⸻
+
+📱 Responsive Strategy
+• Mobile-first approach
+• Tailwind breakpoint system
+• Layout shift at md breakpoint
+• Scroll lock when mobile menu is open
+• Flexible grid & flex layouts
+
+⸻
+
+🚀 Deployment
+
+This project is deployed using Vercel.
+
+Deployment process: 1. Push changes to GitHub 2. Connect repository to Vercel 3. Automatic deployment on every push
+
+⸻
+
+🧠 Technical Decisions
+
+Why Next.js?
+• File-based routing
+• Built-in optimization
+• Excellent performance
+• App Router support
+
+Why Tailwind CSS?
+• Utility-first workflow
+• Faster UI development
+• Consistent spacing & layout system
+
+Why ShadCN?
+• Accessible components
+• Radix-based primitives
+• Fully customizable design system
+
+⸻
+
+📈 Future Improvements
+• Dark / Light mode toggle
+• Backend integration for contact form
+• Blog section
+• SEO optimization
+• Performance audit & Lighthouse improvements
+
+⸻
+
+👨‍💻 Author
+
+Dimas Denny
+
+GitHub: https://github.com/Dimas-Denny
+Portfolio: coming soon!!
+
+⸻
+
+📄 License
+
+This project is for personal portfolio and educational purposes.
+
+⸻
